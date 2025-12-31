@@ -23,18 +23,18 @@ body.dark {
   background: #0b0d10;
   color: #eaeaea;
 }
-/* Accent Color: Subtle green */
+/* Accent Color: Subtle blue */
 :root {
-  --accent: #6b9080;
-  --accent-light: #8fb3a0;
+  --accent: #2a6db0;
+  --accent-light: #4a90e2;
   --bg: #f5f5f5;
   --text: #333;
   --bg-alt: #fff;
   --border: #ddd;
 }
 body.dark {
-  --accent: #6b9080;
-  --accent-light: #8fb3a0;
+  --accent: #4a90e2;
+  --accent-light: #7ab1f2;
   --bg: #0b0d10;
   --text: #eaeaea;
   --bg-alt: #1a1f26;
@@ -113,21 +113,20 @@ body.dark nav {
   height: 220px;
   border-radius: 50%;
   object-fit: cover;
-  filter: grayscale(50%) brightness(0.85);
+  filter: grayscale(50%) brightness(0.7);
   animation: floatAnimation 6s ease-in-out infinite;
   transition: filter 0.5s ease, transform 0.3s ease;
   will-change: transform;
 }
 body:not(.dark) .profile-image {
-  filter: grayscale(50%) brightness(1);
+  filter: grayscale(0%) brightness(1);
 }
 .profile-image:hover {
   filter: grayscale(50%) brightness(0.85);
   transform: scale(1.05);
 }
 body:not(.dark) .profile-image:hover {
-  filter: grayscale(50%) brightness(1);
-  transform: scale(1.05);
+  filter: grayscale(0%) brightness(1.1);
 }
 .header-content {
   flex: 1;
@@ -161,7 +160,7 @@ body:not(.dark) .profile-image:hover {
 section {
   max-width: 1000px;
   margin: auto;
-  padding: 80px 40px;
+  padding: 100px 40px 80px;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -173,7 +172,7 @@ section.visible {
 }
 .section-number {
   position: absolute;
-  top: 20px;
+  top: 40px;
   left: -40px;
   font-size: 3rem;
   color: var(--accent);
@@ -240,131 +239,183 @@ ul {
 /* Tags */
 .tag {
   display: inline-block;
-  background: var(--bg-alt);
+  background: rgba(var(--accent), 0.1);
   padding: 6px 12px;
   margin: 6px 6px 0 0;
   border-radius: 20px;
   font-size: 0.85rem;
-  border: 1px solid transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
   transition: all 0.3s ease;
   cursor: default;
 }
 .tag:hover {
-  background: #e0e0e0;
-  border-color: var(--accent);
+  background: rgba(var(--accent), 0.2);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(42,109,176,0.2);
 }
-body.dark .tag:hover {
-  background: #252b35;
-}
-/* Button */
-a.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: var(--accent);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+/* Timeline */
+.timeline {
   position: relative;
-  overflow: hidden;
-}
-a.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
-}
-a.btn:hover::before {
-  width: 300px;
+  width: 100%;
   height: 300px;
+  margin: 40px 0;
 }
-a.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(42,109,176,0.4);
+.timeline-line {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
 }
-/* Horizontal Timeline */
-.timeline-carousel {
-  position: relative;
-  width: 100vw;
-  left: 50%;
+.timeline-dot {
+  position: absolute;
+  top: 46px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+.timeline-description {
+  position: absolute;
+  top: 60px;
+  background: rgba(var(--bg-alt), 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  width: 200px;
+  text-align: center;
   transform: translateX(-50%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+body.dark .timeline-description {
+  background: rgba(26,31,38,0.8);
+}
+/* Projects and Automation Accordion */
+.accordion-item {
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.accordion-item:hover {
+  border-color: var(--accent);
+}
+.accordion-header {
+  padding: 15px;
+  font-weight: bold;
+  position: relative;
+}
+.accordion-header::after {
+  content: '\25BE';
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s;
+}
+.accordion-item.active .accordion-header::after {
+  transform: rotate(180deg);
+}
+.accordion-content {
+  max-height: 0;
   overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 15px;
 }
-.timeline-items {
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+  padding-bottom: 15px;
+}
+.date {
+  font-size: 0.8rem;
+  color: #777;
+}
+/* Automation List */
+.automation-list {
   display: flex;
-  transition: transform 0.5s ease;
+  flex-direction: column;
+  gap: 10px;
 }
-.timeline-item {
-  flex: 0 0 20%;
+/* Stack */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+.stack-item {
   text-align: center;
   padding: 20px;
   background: var(--bg-alt);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin: 0 10px;
 }
-body.dark .timeline-item {
+body.dark .stack-item {
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.stack-item i {
   font-size: 2rem;
   color: var(--accent);
+}
+.stack-item p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+.stack-item .years {
+  font-size: 0.8rem;
+  color: #777;
+}
+/* Portfolio Items */
+.portfolio-item {
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.3s;
   cursor: pointer;
-  z-index: 10;
 }
-.left-arrow {
-  left: 20px;
+.portfolio-item:hover {
+  border-color: var(--accent);
 }
-.right-arrow {
-  right: 20px;
+.portfolio-header {
+  padding: 15px;
+  position: relative;
 }
-/* Projects List */
-.projects-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+.portfolio-number {
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-right: 10px;
 }
-.project-card {
-  background: var(--bg-alt);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.portfolio-name {
+  font-weight: bold;
 }
-body.dark .project-card {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+.portfolio-type {
+  font-size: 0.9rem;
+  color: #777;
 }
-/* Portfolio Cards */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+.portfolio-year {
+  font-size: 0.8rem;
+  color: #777;
 }
-.portfolio-card {
-  background: var(--bg-alt);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.portfolio-header::after {
+  content: '\25BE';
+  position: absolute;
+  right: 15px;
   transition: transform 0.3s;
-  cursor: pointer;
 }
-.portfolio-card:hover {
-  transform: translateY(-5px);
+.portfolio-item.active .portfolio-header::after {
+  transform: rotate(180deg);
 }
-body.dark .portfolio-card {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+.portfolio-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 15px;
+}
+.portfolio-item.active .portfolio-content {
+  max-height: 500px;
+  padding-bottom: 15px;
 }
 .images-container {
   display: flex;
@@ -384,85 +435,19 @@ body.dark .portfolio-card {
 body.dark .image-placeholder {
   background: #333;
 }
-.expanded {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-}
-.expanded img {
-  max-width: 90%;
-  max-height: 90%;
-}
-/* Stack Carousel */
-.stack-carousel {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  transform: translateX(-50%);
-  overflow: hidden;
-}
-.stack-items {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-.stack-item {
-  flex: 0 0 20%;
-  text-align: center;
-  padding: 20px;
-}
-.stack-item i {
-  font-size: 2rem;
-  color: var(--accent);
-}
-.stack-item p {
-  margin-top: 10px;
-  font-size: 0.9rem;
-}
-/* Automation Visual */
-.automation-visual {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-}
-.visual-item {
-  flex: 1;
-  min-width: 200px;
-  background: var(--bg-alt);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-body.dark .visual-item {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
 /* Stats */
 .stats-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   max-width: 1000px;
-  margin: 40px 0;
+  margin: 40px auto;
   padding: 0 20px;
+  text-align: center;
 }
 .stat-item {
-  text-align: center;
   padding: 20px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s, transform 0.5s;
-}
-.stat-item.visible {
-  opacity: 1;
-  transform: translateY(0);
+  min-width: 150px;
 }
 .stat-number {
   font-size: 2.5rem;
@@ -506,6 +491,23 @@ body.dark .visual-item {
   background: var(--accent-light);
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(42,109,176,0.5);
+}
+.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.expanded img {
+  max-width: 90%;
+  max-height: 90%;
 }
 /* Animations */
 @keyframes fadeInUp {
@@ -559,13 +561,10 @@ body.dark .visual-item {
     font-size: 0.9rem;
   }
   section {
-    padding: 60px 20px;
+    padding: 80px 20px 60px;
   }
-  .timeline-item {
-    flex: 0 0 80%;
-  }
-  .stack-item {
-    flex: 0 0 33%;
+  .section-number {
+    left: -20px;
   }
 }
 </style>
@@ -635,56 +634,62 @@ body.dark .visual-item {
   <p>
     My journey combines civil engineering education with hands-on BIM experience in international infrastructure projects.
   </p>
-  <div class="timeline-carousel">
-    <div class="arrow left-arrow" onclick="timelinePrev()">&#9664;</div>
-    <div class="timeline-items">
-      <div class="timeline-item">
+  <div class="timeline">
+    <div class="timeline-line"></div>
+    <div class="timeline-dot" style="left: 0%;" data-year="2015">
+      <div class="timeline-description">
         <h4>Civil Engineering (B.Eng.)</h4>
-        <p>2011 - 2015</p>
-        <p>Politechnika Krakowska, Krakow. Studies in English.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>Postgraduate Studies: BIM Manager</h4>
-        <p>2017 - 2018</p>
-        <p>Wyzsza Szkola Bankowa, Poznan. Modern management of construction investments.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>BIM Designer at JACOBS</h4>
-        <p>September 2016 - April 2018</p>
-        <p>Modeled linear elements for Dubai Metro R2020, coordinating BIM workflows.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>BIM Designer & Coordinator at JACOBS</h4>
-        <p>April 2018 - December 2018</p>
-        <p>Coordinated bridge team for Lower Thames Crossing, setting CDE and standards.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>BIM Coordinator - Viaducts and Tunnels at JACOBS</h4>
-        <p>April 2018 - December 2018</p>
-        <p>Coordinated BIM for Dubai Metro R2020 viaducts and tunnels, verifying models and leading trainings.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>BIM Manager at JACOBS ENGINEERING GROUP</h4>
-        <p>January 2019 - August 2020</p>
-        <p>Managed BIM for High Speed 2, Western Rail Link to Heathrow, and Transpennine Route Upgrade, automating compliance and 4D/5D modeling.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>BIM Specialist (Consultant) at AUTODESK</h4>
-        <p>September 2020 - December 2023</p>
-        <p>Supported corporate clients in digital transformation, implementing BIM processes with Autodesk tools, automation, and audits.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>BIM Manager at AECOM</h4>
-        <p>December 2023 - October 2025</p>
-        <p>Developed BIM strategies for Surrey-Langley Skytrain and High Frequency Rail projects, managing multi-disciplinary teams and CDE integration.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>BIM Lead - EC Poland at AECOM</h4>
-        <p>October 2025 - Present</p>
-        <p>Leading BIM teams in Poland, managing processes, coordinating projects, team management, and implementing digital strategies for infrastructure projects.</p>
+        <p>2011 - 2015, Politechnika Krakowska</p>
       </div>
     </div>
-    <div class="arrow right-arrow" onclick="timelineNext()">&#9654;</div>
+    <div class="timeline-dot" style="left: 9.09%;" data-year="2016">
+      <div class="timeline-description">
+        <h4>BIM Designer at JACOBS</h4>
+        <p>2016 - 2018, Dubai Metro R2020</p>
+      </div>
+    </div>
+    <div class="timeline-dot" style="left: 27.27%;" data-year="2018">
+      <div class="timeline-description">
+        <h4>Postgraduate BIM Manager</h4>
+        <p>2017 - 2018, Wyzsza Szkola Bankowa</p>
+      </div>
+    </div>
+    <div class="timeline-dot" style="left: 27.27%;" data-year="2018">
+      <div class="timeline-description">
+        <h4>BIM Designer & Coordinator</h4>
+        <p>2018, Lower Thames Crossing</p>
+      </div>
+    </div>
+    <div class="timeline-dot" style="left: 27.27%;" data-year="2018">
+      <div class="timeline-description">
+        <h4>BIM Coordinator Viaducts/Tunnels</h4>
+        <p>2018, Dubai Metro R2020</p>
+      </div>
+    </div>
+    <div class="timeline-dot" style="left: 36.36%;" data-year="2019">
+      <div class="timeline-description">
+        <h4>BIM Manager at JACOBS</h4>
+        <p>2019 - 2020, HS2, Western Rail, Transpennine</p>
+      </div>
+    </div>
+    <div class="timeline-dot" style="left: 45.45%;" data-year="2020">
+      <div class="timeline-description">
+        <h4>BIM Specialist at AUTODESK</h4>
+        <p>2020 - 2023</p>
+      </div>
+    </div>
+    <div class="timeline-dot" style="left: 72.73%;" data-year="2023">
+      <div class="timeline-description">
+        <h4>BIM Manager at AECOM</h4>
+        <p>2023 - 2025, Surrey-Langley, High Frequency Rail</p>
+      </div>
+    </div>
+    <div class="timeline-dot" style="left: 90.91%;" data-year="2025">
+      <div class="timeline-description">
+        <h4>BIM Lead - EC Poland at AECOM</h4>
+        <p>2025 - Present</p>
+      </div>
+    </div>
   </div>
 </section>
 <div class="separator"></div>
@@ -696,37 +701,77 @@ body.dark .visual-item {
     Scale, repetition and long asset lifecycles make manual processes impossible.
   </p>
   <div class="projects-list">
-    <div class="project-card">
-      <h3>Surrey-Langley Skytrain (SFSP)</h3>
-      <p>Role: BIM Manager - Developed and implemented BIM strategy for design phase.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Surrey-Langley Skytrain (SFSP)
+        <span class="date">2023 - 2025</span>
+      </div>
+      <div class="accordion-content">
+        Role: BIM Manager - Developed and implemented BIM strategy for design phase.
+      </div>
     </div>
-    <div class="project-card">
-      <h3>High Frequency Rail (VIA HFR)</h3>
-      <p>Role: BIM Manager - Collaborated with client on BIM implementation and audits.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        High Frequency Rail (VIA HFR)
+        <span class="date">2023 - 2025</span>
+      </div>
+      <div class="accordion-content">
+        Role: BIM Manager - Collaborated with client on BIM implementation and audits.
+      </div>
     </div>
-    <div class="project-card">
-      <h3>High Speed 2 On Network Works</h3>
-      <p>Role: BIM Manager - Managed CDE and automated BIM/CAD compliance.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        High Speed 2 On Network Works
+        <span class="date">2019 - 2020</span>
+      </div>
+      <div class="accordion-content">
+        Role: BIM Manager - Managed CDE and automated BIM/CAD compliance.
+      </div>
     </div>
-    <div class="project-card">
-      <h3>Western Rail Link to Heathrow</h3>
-      <p>Role: BIM Manager - Information Manager and Model Coordinator.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Western Rail Link to Heathrow
+        <span class="date">2019 - 2020</span>
+      </div>
+      <div class="accordion-content">
+        Role: BIM Manager - Information Manager and Model Coordinator.
+      </div>
     </div>
-    <div class="project-card">
-      <h3>Transpennine Route Upgrade</h3>
-      <p>Role: BIM Manager - Implemented 4D/5D modeling and clash detection automation.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Transpennine Route Upgrade
+        <span class="date">2019 - 2020</span>
+      </div>
+      <div class="accordion-content">
+        Role: BIM Manager - Implemented 4D/5D modeling and clash detection automation.
+      </div>
     </div>
-    <div class="project-card">
-      <h3>Dubai Metro R2020 (Viaducts and Tunnels)</h3>
-      <p>Role: BIM Coordinator - Managed structural team, model verification, and reports.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Dubai Metro R2020 (Viaducts and Tunnels)
+        <span class="date">2018</span>
+      </div>
+      <div class="accordion-content">
+        Role: BIM Coordinator - Managed structural team, model verification, and reports.
+      </div>
     </div>
-    <div class="project-card">
-      <h3>Lower Thames Crossing</h3>
-      <p>Role: BIM Designer & Coordinator - Trained team, set CDE, coordinated models.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Lower Thames Crossing
+        <span class="date">2018</span>
+      </div>
+      <div class="accordion-content">
+        Role: BIM Designer & Coordinator - Trained team, set CDE, coordinated models.
+      </div>
     </div>
-    <div class="project-card">
-      <h3>Dubai Metro R2020 (Linear Elements)</h3>
-      <p>Role: BIM Designer - Modeled viaducts, tunnels, and proposed process improvements.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Dubai Metro R2020 (Linear Elements)
+        <span class="date">2016 - 2018</span>
+      </div>
+      <div class="accordion-content">
+        Role: BIM Designer - Modeled viaducts, tunnels, and proposed process improvements.
+      </div>
     </div>
   </div>
 </section>
@@ -737,28 +782,38 @@ body.dark .visual-item {
   <p>
     I automate what teams repeat hundreds of times — and shouldn't. Most AEC problems are not model problems. They are information problems.
   </p>
-  <p>
-    I enhance design software using Dynamo and Grasshopper, along with C# for Revit API. Focus on QA/QC model validations for Revit and Civil 3D models, combining multiple data flows, reporting in PowerBI with rule-based checks. Also, design and coordination automation, infrastructure-scale workflows.
-  </p>
-  <p>
-    Using connections with all project information via PowerBI, PowerApps, and Microsoft Flows to automate all types of information flows. ISO 19650 turned into working processes, model-to-data pipelines, dashboards for decision-makers, automated reviews, approvals, and audits.
-  </p>
-  <div class="automation-visual">
-    <div class="visual-item">
-      <h4>QA/QC Validation</h4>
-      <p>Rule-based checks for naming, parameters, LOI/LOD in Revit/C3D models.</p>
+  <div class="automation-list">
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        QA/QC Validation
+      </div>
+      <div class="accordion-content">
+        Rule-based checks for naming, parameters, LOI/LOD in Revit/C3D models.
+      </div>
     </div>
-    <div class="visual-item">
-      <h4>Data Flows</h4>
-      <p>Combine multiple sources, report in PowerBI, automate info flows with PowerApps and Flows.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Data Flows
+      </div>
+      <div class="accordion-content">
+        Combine multiple sources, report in PowerBI, automate info flows with PowerApps and Flows.
+      </div>
     </div>
-    <div class="visual-item">
-      <h4>Design Automation</h4>
-      <p>Dynamo, Grasshopper, C# Revit API for coordination and infrastructure workflows.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Design Automation
+      </div>
+      <div class="accordion-content">
+        Dynamo, Grasshopper, C# Revit API for coordination and infrastructure workflows.
+      </div>
     </div>
-    <div class="visual-item">
-      <h4>Information Pipelines</h4>
-      <p>Model-to-data, dashboards, automated audits per ISO 19650.</p>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        Information Pipelines
+      </div>
+      <div class="accordion-content">
+        Model-to-data, dashboards, automated audits per ISO 19650.
+      </div>
     </div>
   </div>
 </section>
@@ -769,22 +824,62 @@ body.dark .visual-item {
   <p>
     Tools I use to challenge the status quo:
   </p>
-  <div class="stack-carousel">
-    <div class="arrow left-arrow" onclick="stackPrev()">&#9664;</div>
-    <div class="stack-items">
-      <div class="stack-item"><i class="fab fa-microsoft"></i><p>Revit API (C#)</p></div>
-      <div class="stack-item"><i class="fas fa-code"></i><p>Dynamo</p></div>
-      <div class="stack-item"><i class="fab fa-python"></i><p>Python</p></div>
-      <div class="stack-item"><i class="fas fa-code-branch"></i><p>pyRevit</p></div>
-      <div class="stack-item"><i class="fas fa-chart-bar"></i><p>Power BI</p></div>
-      <div class="stack-item"><i class="fas fa-robot"></i><p>Power Automate</p></div>
-      <div class="stack-item"><i class="fas fa-mobile-alt"></i><p>Power Apps</p></div>
-      <div class="stack-item"><i class="fas fa-cloud"></i><p>ACC / CDE</p></div>
-      <div class="stack-item"><i class="fas fa-database"></i><p>Bentley ProjectWise</p></div>
-      <div class="stack-item"><i class="fab fa-css3-alt"></i><p>CSS + JS</p></div>
-      <div class="stack-item"><i class="fas fa-drafting-compass"></i><p>Grasshopper</p></div>
+  <div class="stack-grid">
+    <div class="stack-item">
+      <i class="fab fa-microsoft"></i>
+      <p>Revit API (C#)</p>
+      <div class="years">5 years</div>
     </div>
-    <div class="arrow right-arrow" onclick="stackNext()">&#9654;</div>
+    <div class="stack-item">
+      <i class="fas fa-code"></i>
+      <p>Dynamo</p>
+      <div class="years">7 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fab fa-python"></i>
+      <p>Python</p>
+      <div class="years">5 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fas fa-code-branch"></i>
+      <p>pyRevit</p>
+      <div class="years">4 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fas fa-chart-bar"></i>
+      <p>Power BI</p>
+      <div class="years">6 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fas fa-robot"></i>
+      <p>Power Automate</p>
+      <div class="years">4 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fas fa-mobile-alt"></i>
+      <p>Power Apps</p>
+      <div class="years">4 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fas fa-cloud"></i>
+      <p>ACC / CDE</p>
+      <div class="years">8 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fas fa-database"></i>
+      <p>Bentley ProjectWise</p>
+      <div class="years">5 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fab fa-css3-alt"></i>
+      <p>CSS + JS</p>
+      <div class="years">3 years</div>
+    </div>
+    <div class="stack-item">
+      <i class="fas fa-drafting-compass"></i>
+      <p>Grasshopper</p>
+      <div class="years">4 years</div>
+    </div>
   </div>
 </section>
 <div class="separator"></div>
@@ -799,140 +894,52 @@ body.dark .visual-item {
     Most work is NDA-bound — what matters is how I think,
     not what logos I can show. Here are example projects with randomized data.
   </p>
-  <div class="portfolio-grid">
-    <div class="portfolio-card">
-      <h3>Metro Extension Project</h3>
-      <p>Project Type: Urban Transit</p>
-      <p>Challenge/Solution: Automated clash detection in complex tunnel models, reducing errors by 40%.</p>
-      <div class="tags">
-        <span class="tag">Revit</span><span class="tag">Dynamo</span><span class="tag">C#</span>
+  <div class="portfolio-list">
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">001</span>
+        <span class="portfolio-name">Metro Extension Project</span>
+        <br>
+        <span class="portfolio-type">Urban Transit</span>
+        <br>
+        <span class="portfolio-year">2023</span>
+        <div class="tags">
+          <span class="tag">Revit</span><span class="tag">Dynamo</span><span class="tag">C#</span>
+        </div>
       </div>
-      <p>Impact: Saved 200 man-hours per review cycle.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <h3>High-Speed Rail Corridor</h3>
-      <p>Project Type: Rail Infrastructure</p>
-      <p>Challenge/Solution: Parametric modeling for viaducts, enabling rapid iterations.</p>
-      <div class="tags">
-        <span class="tag">Civil 3D</span><span class="tag">Grasshopper</span><span class="tag">Python</span>
-      </div>
-      <p>Impact: Reduced design time by 30%.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Automated clash detection in complex tunnel models, reducing errors by 40%.</p>
+        <p>Impact: Saved 200 man-hours per review cycle.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
       </div>
     </div>
-    <div class="portfolio-card">
-      <h3>Airport Link Upgrade</h3>
-      <p>Project Type: Aviation Rail</p>
-      <p>Challenge/Solution: Data pipeline from models to dashboards for stakeholder reporting.</p>
-      <div class="tags">
-        <span class="tag">Power BI</span><span class="tag">Power Automate</span><span class="tag">Revit API</span>
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">002</span>
+        <span class="portfolio-name">High-Speed Rail Corridor</span>
+        <br>
+        <span class="portfolio-type">Rail Infrastructure</span>
+        <br>
+        <span class="portfolio-year">2022</span>
+        <div class="tags">
+          <span class="tag">Civil 3D</span><span class="tag">Grasshopper</span><span class="tag">Python</span>
+        </div>
       </div>
-      <p>Impact: Improved decision-making speed by 50%.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <h3>Urban Light Rail</h3>
-      <p>Project Type: Public Transport</p>
-      <p>Challenge/Solution: Rule-based QA for multi-disciplinary models.</p>
-      <div class="tags">
-        <span class="tag">Navisworks</span><span class="tag">Dynamo</span><span class="tag">C#</span>
-      </div>
-      <p>Impact: Detected 150+ issues early, avoiding rework costs.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Parametric modeling for viaducts, enabling rapid iterations.</p>
+        <p>Impact: Reduced design time by 30%.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
       </div>
     </div>
-    <div class="portfolio-card">
-      <h3>Bridge Reconstruction</h3>
-      <p>Project Type: Highway Infrastructure</p>
-      <p>Challenge/Solution: Automated reinforcement detailing with API scripts.</p>
-      <div class="tags">
-        <span class="tag">Revit</span><span class="tag">Python</span><span class="tag">Grasshopper</span>
-      </div>
-      <p>Impact: Accelerated detailing by 60%.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <h3>Tunnel Ventilation System</h3>
-      <p>Project Type: Underground Infrastructure</p>
-      <p>Challenge/Solution: Simulation integration with BIM models for optimization.</p>
-      <div class="tags">
-        <span class="tag">InfraWorks</span><span class="tag">Power Apps</span><span class="tag">C#</span>
-      </div>
-      <p>Impact: Reduced energy consumption estimates by 25%.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <h3>Rail Signal Modernization</h3>
-      <p>Project Type: Rail Signaling</p>
-      <p>Challenge/Solution: Automated asset tagging and database sync.</p>
-      <div class="tags">
-        <span class="tag">ProjectWise</span><span class="tag">Dynamo</span><span class="tag">Python</span>
-      </div>
-      <p>Impact: Streamlined maintenance data for 100km corridor.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <h3>Coastal Defense Project</h3>
-      <p>Project Type: Civil Defense</p>
-      <p>Challenge/Solution: Parametric coastal modeling with environmental data.</p>
-      <div class="tags">
-        <span class="tag">Civil 3D</span><span class="tag">Grasshopper</span><span class="tag">Power BI</span>
-      </div>
-      <p>Impact: Optimized design for flood resistance.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <h3>Urban Redevelopment Hub</h3>
-      <p>Project Type: Mixed-Use Infrastructure</p>
-      <p>Challenge/Solution: Multi-source data integration for planning dashboards.</p>
-      <div class="tags">
-        <span class="tag">Revit API</span><span class="tag">Power Automate</span><span class="tag">C#</span>
-      </div>
-      <p>Impact: Enhanced collaboration across 5 teams.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <h3>Highway Expansion</h3>
-      <p>Project Type: Road Infrastructure</p>
-      <p>Challenge/Solution: Automated alignment optimization with scripts.</p>
-      <div class="tags">
-        <span class="tag">InfraWorks</span><span class="tag">Python</span><span class="tag">Dynamo</span>
-      </div>
-      <p>Impact: Cut planning phase by 35%.</p>
-      <div class="images-container">
-        <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-        <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-      </div>
-    </div>
+    <!-- Add more portfolio items similarly -->
   </div>
 </section>
-<div class="separator"></div>
 <div class="footer">
   Built with frustration, experience and code.<br>
   Part of the rebellion.
@@ -951,9 +958,9 @@ function toggleMode() {
 }
 function updateModeIcon() {
   if (document.body.classList.contains('dark')) {
-    modeToggle.innerHTML = '☀️'; // Switch to light
+    modeToggle.innerHTML = '☀️';
   } else {
-    modeToggle.innerHTML = '🌙'; // Switch to dark
+    modeToggle.innerHTML = '🌙';
   }
 }
 if (localStorage.getItem('mode') === 'light') {
@@ -1012,15 +1019,10 @@ document.querySelectorAll('section').forEach(section => {
   sectionObserver.observe(section);
 });
 
-// Stats Items
-document.querySelectorAll('.stat-item').forEach((item, index) => {
-  const statObserver = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      setTimeout(() => item.classList.add('visible'), index * 200);
-    }
-  }, { threshold: 0.5 });
-  statObserver.observe(item);
-});
+// Accordion Toggle
+function toggleAccordion(el) {
+  el.classList.toggle('active');
+}
 
 // Parallax Profile Image
 window.addEventListener('scroll', function() {
@@ -1029,40 +1031,10 @@ window.addEventListener('scroll', function() {
   profile.style.transform = `translateY(${scrollPos}px)`;
 });
 
-// Timeline Carousel
-let timelineSlide = 0;
-const timelineItems = document.querySelector('.timeline-items');
-const timelineItemCount = document.querySelectorAll('.timeline-item').length;
-function timelineNext() {
-  timelineSlide = (timelineSlide + 1) % (timelineItemCount - 4);
-  timelineItems.style.transform = `translateX(-${timelineSlide * 20}%)`;
-}
-function timelinePrev() {
-  timelineSlide = (timelineSlide - 1 + (timelineItemCount - 4)) % (timelineItemCount - 4);
-  timelineItems.style.transform = `translateX(-${timelineSlide * 20}%)`;
-}
-
-// Stack Carousel
-let stackSlide = 0;
-const stackItems = document.querySelector('.stack-items');
-const stackItemCount = document.querySelectorAll('.stack-item').length;
-setInterval(() => {
-  stackSlide = (stackSlide + 1) % (stackItemCount - 4);
-  stackItems.style.transform = `translateX(-${stackSlide * 20}%)`;
-}, 5000);
-function stackNext() {
-  stackSlide = (stackSlide + 1) % (stackItemCount - 4);
-  stackItems.style.transform = `translateX(-${stackSlide * 20}%)`;
-}
-function stackPrev() {
-  stackSlide = (stackSlide - 1 + (stackItemCount - 4)) % (stackItemCount - 4);
-  stackItems.style.transform = `translateX(-${stackSlide * 20}%)`;
-}
-
-// Expand Image (placeholder logic)
+// Expand Image
 function expandImage(el) {
   const expanded = document.getElementById('expanded-image');
-  expanded.querySelector('img').src = 'placeholder.jpg'; // Replace with actual image src
+  expanded.querySelector('img').src = 'placeholder.jpg';
   expanded.style.display = 'flex';
 }
 function closeExpanded() {
