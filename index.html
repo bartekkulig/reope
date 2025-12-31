@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Bartek Kulig | Information Manager who codes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 * {
@@ -22,18 +23,18 @@ body.dark {
   background: #0b0d10;
   color: #eaeaea;
 }
-/* Accent Color: Subtle green */
+/* Accent Color: Subtle blue */
 :root {
-  --accent: #6b9080;
-  --accent-light: #8fb3a0;
+  --accent: #2a6db0;
+  --accent-light: #4a90e2;
   --bg: #f5f5f5;
   --text: #333;
   --bg-alt: #fff;
   --border: #ddd;
 }
 body.dark {
-  --accent: #6b9080;
-  --accent-light: #8fb3a0;
+  --accent: #4a90e2;
+  --accent-light: #7ab1f2;
   --bg: #0b0d10;
   --text: #eaeaea;
   --bg-alt: #1a1f26;
@@ -160,7 +161,14 @@ section {
   max-width: 1000px;
   margin: auto;
   padding: 80px 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
   position: relative;
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .section-number {
   position: absolute;
@@ -168,6 +176,11 @@ section {
   left: -40px;
   font-size: 3rem;
   color: var(--accent);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+section.visible .section-number {
   opacity: 0.3;
   transform: translateX(0);
 }
@@ -239,7 +252,7 @@ ul {
   background: #e0e0e0;
   border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(107,144,128,0.2);
+  box-shadow: 0 4px 12px rgba(42,109,176,0.2);
 }
 body.dark .tag:hover {
   background: #252b35;
@@ -276,71 +289,46 @@ a.btn:hover::before {
 }
 a.btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(107,144,128,0.4);
+  box-shadow: 0 8px 20px rgba(42,109,176,0.4);
 }
-/* Timeline */
-.timeline {
+/* Horizontal Timeline */
+.timeline-carousel {
   position: relative;
-  max-width: 800px;
-  margin: 40px auto;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  width: 2px;
-  background: var(--accent);
-  top: 0;
-  bottom: 0;
+  width: 100vw;
   left: 50%;
   transform: translateX(-50%);
+  overflow: hidden;
+}
+.timeline-items {
+  display: flex;
+  transition: transform 0.5s ease;
 }
 .timeline-item {
-  padding: 20px 40px;
-  position: relative;
-  width: 50%;
-}
-.timeline-item:nth-child(odd) {
-  left: 0;
-  text-align: right;
-}
-.timeline-item:nth-child(even) {
-  left: 50%;
-}
-.timeline-dot {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--accent);
-  top: 30px;
-  right: -10px;
-}
-.timeline-item:nth-child(even) .timeline-dot {
-  left: -10px;
-}
-.timeline-content {
-  background: var(--bg-alt);
+  flex: 0 0 20%;
+  text-align: center;
   padding: 20px;
+  background: var(--bg-alt);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  position: relative;
+  margin: 0 10px;
 }
-.timeline-content::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  right: -15px;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent transparent transparent var(--bg-alt);
-}
-.timeline-item:nth-child(even) .timeline-content::before {
-  left: -15px;
-  right: auto;
-  border-color: transparent var(--bg-alt) transparent transparent;
-}
-body.dark .timeline-content {
+body.dark .timeline-item {
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: var(--accent);
+  cursor: pointer;
+  z-index: 10;
+}
+.left-arrow {
+  left: 20px;
+}
+.right-arrow {
+  right: 20px;
 }
 /* Projects List */
 .projects-list {
@@ -414,11 +402,11 @@ body.dark .image-placeholder {
 }
 /* Stack Carousel */
 .stack-carousel {
-  overflow: hidden;
   position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
 }
 .stack-items {
   display: flex;
@@ -461,12 +449,19 @@ body.dark .visual-item {
   justify-content: space-around;
   flex-wrap: wrap;
   max-width: 1000px;
-  margin: 40px auto;
-  padding: 40px 20px;
+  margin: 40px 0;
+  padding: 0 20px;
 }
 .stat-item {
   text-align: center;
   padding: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.stat-item.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .stat-number {
   font-size: 2.5rem;
@@ -500,7 +495,7 @@ body.dark .visual-item {
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(107,144,128,0.3);
+  box-shadow: 0 4px 12px rgba(42,109,176,0.3);
 }
 .scroll-to-top.visible {
   opacity: 1;
@@ -509,20 +504,7 @@ body.dark .visual-item {
 .scroll-to-top:hover {
   background: var(--accent-light);
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(107,144,128,0.5);
-}
-/* Cursor Trail */
-.cursor-trail {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.5;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
-  z-index: 9999;
+  box-shadow: 0 8px 20px rgba(42,109,176,0.5);
 }
 /* Animations */
 @keyframes fadeInUp {
@@ -578,23 +560,8 @@ body.dark .visual-item {
   section {
     padding: 60px 20px;
   }
-  .timeline::before {
-    left: 20px;
-  }
   .timeline-item {
-    width: 100%;
-    left: 0 !important;
-    text-align: left;
-    padding-left: 50px;
-  }
-  .timeline-dot {
-    left: 10px !important;
-    right: auto !important;
-  }
-  .timeline-content::before {
-    left: -15px !important;
-    right: auto !important;
-    border-color: transparent var(--bg-alt) transparent transparent !important;
+    flex: 0 0 80%;
   }
   .stack-item {
     flex: 0 0 33%;
@@ -611,7 +578,6 @@ body.dark .visual-item {
     <a href="#automation">Automation & Information</a>
     <a href="#stack">Stack</a>
     <a href="#portfolio">Portfolio</a>
-    <a href="#cv">CV</a>
   </div>
   <div class="mode-toggle" onclick="toggleMode()">☀️</div>
 </nav>
@@ -642,99 +608,82 @@ body.dark .visual-item {
     </div>
   </div>
 </div>
+<div class="stats-section">
+  <div class="stat-item">
+    <div class="stat-number">10+</div>
+    <div class="stat-label">Years of Experience in the Industry</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">5+</div>
+    <div class="stat-label">Years Coding for Fun</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">20+</div>
+    <div class="stat-label">Large International Projects</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">7</div>
+    <div class="stat-label">Countries Worked In</div>
+  </div>
+</div>
 <div class="separator"></div>
 <section id="journey">
   <div class="section-number">01</div>
   <h2>Journey</h2>
-  <h3>Education</h3>
+  <h3>Education & Professional Experience</h3>
   <p>
-    Civil Engineering graduate (taught in English), followed by postgraduate
-    studies in BIM Management. My technical background comes from engineering,
-    not software theory — which heavily shapes how I design tools.
+    My journey combines civil engineering education with hands-on BIM experience in international infrastructure projects.
   </p>
-  <h3>Professional Experience</h3>
-  <p>
-    Over the last decade I've worked across metro systems, high-speed rail
-    and long transport corridors in Europe, the Middle East and North America.
-  </p>
-  <p>
-    I've moved from hands-on BIM coordination into automation, consulting
-    and finally information management leadership — without losing touch
-    with real project delivery.
-  </p>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
+  <div class="timeline-carousel">
+    <div class="arrow left-arrow" onclick="timelinePrev()">&#9664;</div>
+    <div class="timeline-items">
+      <div class="timeline-item">
+        <h4>Civil Engineering (B.Eng.)</h4>
+        <p>2011 - 2015</p>
+        <p>Politechnika Krakowska, Krakow. Studies in English.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Postgraduate Studies: BIM Manager</h4>
+        <p>2017 - 2018</p>
+        <p>Wyzsza Szkola Bankowa, Poznan. Modern management of construction investments.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>BIM Designer at JACOBS</h4>
+        <p>September 2016 - April 2018</p>
+        <p>Modeled linear elements for Dubai Metro R2020, coordinating BIM workflows.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>BIM Designer & Coordinator at JACOBS</h4>
+        <p>April 2018 - December 2018</p>
+        <p>Coordinated bridge team for Lower Thames Crossing, setting CDE and standards.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>BIM Coordinator - Viaducts and Tunnels at JACOBS</h4>
+        <p>April 2018 - December 2018</p>
+        <p>Coordinated BIM for Dubai Metro R2020 viaducts and tunnels, verifying models and leading trainings.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>BIM Manager at JACOBS ENGINEERING GROUP</h4>
+        <p>January 2019 - August 2020</p>
+        <p>Managed BIM for High Speed 2, Western Rail Link to Heathrow, and Transpennine Route Upgrade, automating compliance and 4D/5D modeling.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>BIM Specialist (Consultant) at AUTODESK</h4>
+        <p>September 2020 - December 2023</p>
+        <p>Supported corporate clients in digital transformation, implementing BIM processes with Autodesk tools, automation, and audits.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>BIM Manager at AECOM</h4>
+        <p>December 2023 - October 2025</p>
+        <p>Developed BIM strategies for Surrey-Langley Skytrain and High Frequency Rail projects, managing multi-disciplinary teams and CDE integration.</p>
+      </div>
+      <div class="timeline-item">
         <h4>BIM Lead - EC Poland at AECOM</h4>
         <p>October 2025 - Present</p>
         <p>Leading BIM teams in Poland, managing processes, coordinating projects, team management, and implementing digital strategies for infrastructure projects.</p>
       </div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h4>BIM Manager at AECOM</h4>
-        <p>December 2023 - October 2025</p>
-        <p>Developed BIM strategies for Surrey-Langley Skytrain and High Frequency Rail projects, managing multi-disciplinary teams and CDE integration.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h4>BIM Specialist (Consultant) at AUTODESK</h4>
-        <p>September 2020 - December 2023</p>
-        <p>Supported corporate clients in digital transformation, implementing BIM processes with Autodesk tools, automation, and audits.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h4>BIM Manager at JACOBS ENGINEERING GROUP</h4>
-        <p>January 2019 - August 2020</p>
-        <p>Managed BIM for High Speed 2, Western Rail Link to Heathrow, and Transpennine Route Upgrade, automating compliance and 4D/5D modeling.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h4>BIM Coordinator - Viaducts and Tunnels at JACOBS</h4>
-        <p>April 2018 - December 2018</p>
-        <p>Coordinated BIM for Dubai Metro R2020 viaducts and tunnels, verifying models and leading trainings.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h4>BIM Designer & Coordinator at JACOBS</h4>
-        <p>April 2018 - December 2018</p>
-        <p>Coordinated bridge team for Lower Thames Crossing, setting CDE and standards.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h4>BIM Designer at JACOBS</h4>
-        <p>September 2016 - April 2018</p>
-        <p>Modeled linear elements for Dubai Metro R2020, coordinating BIM workflows.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h4>Postgraduate Studies: BIM Manager</h4>
-        <p>2017 - 2018</p>
-        <p>Wyzsza Szkola Bankowa, Poznan.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h4>Civil Engineering (B.Eng.)</h4>
-        <p>2011 - 2015</p>
-        <p>Politechnika Krakowska, Krakow.</p>
-      </div>
-    </div>
+    <div class="arrow right-arrow" onclick="timelineNext()">&#9654;</div>
   </div>
 </section>
 <div class="separator"></div>
@@ -820,6 +769,7 @@ body.dark .visual-item {
     Tools I use to challenge the status quo:
   </p>
   <div class="stack-carousel">
+    <div class="arrow left-arrow" onclick="stackPrev()">&#9664;</div>
     <div class="stack-items">
       <div class="stack-item"><i class="fab fa-microsoft"></i><p>Revit API (C#)</p></div>
       <div class="stack-item"><i class="fas fa-code"></i><p>Dynamo</p></div>
@@ -833,6 +783,7 @@ body.dark .visual-item {
       <div class="stack-item"><i class="fab fa-css3-alt"></i><p>CSS + JS</p></div>
       <div class="stack-item"><i class="fas fa-drafting-compass"></i><p>Grasshopper</p></div>
     </div>
+    <div class="arrow right-arrow" onclick="stackNext()">&#9654;</div>
   </div>
 </section>
 <div class="separator"></div>
@@ -981,39 +932,11 @@ body.dark .visual-item {
   </div>
 </section>
 <div class="separator"></div>
-<section id="cv">
-  <div class="section-number">06</div>
-  <h2>CV</h2>
-  <p>
-    Want the classic format?
-  </p>
-  <a class="btn" href="CV_Bartek_Kulig.pdf">Download CV</a>
-</section>
-<div class="separator"></div>
-<div class="stats-section">
-  <div class="stat-item">
-    <div class="stat-number">10+</div>
-    <div class="stat-label">Years of Experience in the Industry</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">5+</div>
-    <div class="stat-label">Years Coding for Fun</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">20+</div>
-    <div class="stat-label">Large International Projects</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">7</div>
-    <div class="stat-label">Countries Worked In</div>
-  </div>
-</div>
 <div class="footer">
   Built with frustration, experience and code.<br>
   Part of the rebellion.
 </div>
 <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
-<div id="cursor-trail" class="cursor-trail"></div>
 <div id="expanded-image" class="expanded" style="display: none;" onclick="closeExpanded()">
   <img src="" alt="Expanded Image">
 </div>
@@ -1072,6 +995,32 @@ function scrollToTop() {
   });
 }
 
+// Section Visibility
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+const sectionObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+document.querySelectorAll('section').forEach(section => {
+  sectionObserver.observe(section);
+});
+
+// Stats Items
+document.querySelectorAll('.stat-item').forEach((item, index) => {
+  const statObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      setTimeout(() => item.classList.add('visible'), index * 200);
+    }
+  }, { threshold: 0.5 });
+  statObserver.observe(item);
+});
+
 // Parallax Profile Image
 window.addEventListener('scroll', function() {
   const profile = document.querySelector('.profile-image');
@@ -1079,21 +1028,35 @@ window.addEventListener('scroll', function() {
   profile.style.transform = `translateY(${scrollPos}px)`;
 });
 
-// Cursor Trail
-const trail = document.getElementById('cursor-trail');
-document.addEventListener('mousemove', (e) => {
-  trail.style.left = `${e.pageX}px`;
-  trail.style.top = `${e.pageY}px`;
-});
+// Timeline Carousel
+let timelineSlide = 0;
+const timelineItems = document.querySelector('.timeline-items');
+const timelineItemCount = document.querySelectorAll('.timeline-item').length;
+function timelineNext() {
+  timelineSlide = (timelineSlide + 1) % (timelineItemCount - 4);
+  timelineItems.style.transform = `translateX(-${timelineSlide * 20}%)`;
+}
+function timelinePrev() {
+  timelineSlide = (timelineSlide - 1 + (timelineItemCount - 4)) % (timelineItemCount - 4);
+  timelineItems.style.transform = `translateX(-${timelineSlide * 20}%)`;
+}
 
 // Stack Carousel
-let currentSlide = 0;
-const items = document.querySelector('.stack-items');
-const itemCount = document.querySelectorAll('.stack-item').length;
+let stackSlide = 0;
+const stackItems = document.querySelector('.stack-items');
+const stackItemCount = document.querySelectorAll('.stack-item').length;
 setInterval(() => {
-  currentSlide = (currentSlide + 1) % (itemCount - 4); // Show 5 at a time
-  items.style.transform = `translateX(-${currentSlide * 20}%)`;
-}, 3000);
+  stackSlide = (stackSlide + 1) % (stackItemCount - 4);
+  stackItems.style.transform = `translateX(-${stackSlide * 20}%)`;
+}, 5000);
+function stackNext() {
+  stackSlide = (stackSlide + 1) % (stackItemCount - 4);
+  stackItems.style.transform = `translateX(-${stackSlide * 20}%)`;
+}
+function stackPrev() {
+  stackSlide = (stackSlide - 1 + (stackItemCount - 4)) % (stackItemCount - 4);
+  stackItems.style.transform = `translateX(-${stackSlide * 20}%)`;
+}
 
 // Expand Image (placeholder logic)
 function expandImage(el) {
