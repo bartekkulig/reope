@@ -1,429 +1,590 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Bartek Kulig | Architect who codes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<title>Bartek Kulig | Architect who codes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root{
-      --bg:#0b0d10;
-      --card:#11161c;
-      --text:#eaeaea;
-      --muted:#a8b0b7;
-      --line:#1a1f26;
-      --accent:#4dd0e1;
-      --accent-2:#8e54e9;
-      --nav-h:64px;
-      --contact-h:44px;
-      --radius:16px;
-      --ease: cubic-bezier(.22,.61,.36,1);
-    }
+<style>
+* {
+  scroll-behavior: smooth;
+}
 
-    html{scroll-behavior:smooth;}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0b0d10;
+  color: #eaeaea;
+  overflow-x: hidden;
+}
 
-    /* Fixed nav */
-    nav{
-      position:fixed; top:0; left:0; right:0;
-      height:var(--nav-h);
-      display:flex; align-items:center;
-      gap:20px;
-      padding:0 40px;
-      background: color-mix(in srgb, var(--bg) 88%, #000 12%);
-      border-bottom:1px solid #222;
-      backdrop-filter:saturate(1.2) blur(6px);
-      z-index:1000;
-    }
-    .brand{
-      margin-right:auto;
-      font-weight:800; letter-spacing:.2px;
-      color:var(--text); text-decoration:none;
-      display:flex; align-items:center; gap:.6rem;
-    }
-    .brand .dot{
-      width:8px; height:8px; border-radius:50%;
-      background:radial-gradient(circle at 30% 30%, var(--accent), var(--accent-2));
-      box-shadow:0 0 10px color-mix(in srgb, var(--accent) 70%, transparent);
-    }
-    nav a{
-      color:var(--text);
-      text-decoration:none; font-weight:600;
-      position:relative; padding:8px 6px;
-    }
-    nav a::after{
-      content:"";
-      position:absolute; left:0; right:0; bottom:-3px;
-      height:2px; opacity:0; transform:scaleX(0);
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      transition: transform .25s var(--ease), opacity .25s var(--ease);
-    }
-    nav a:hover::after{opacity:.9; transform:scaleX(1);}
-    nav a.active{color:var(--accent);}
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(11, 13, 16, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #222;
+  padding: 15px 40px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
 
-    /* Top contact strip */
-    .contact-strip{
-      position:fixed; top:var(--nav-h); left:0; right:0;
-      height:var(--contact-h);
-      display:flex; align-items:center; justify-content:center;
-      gap:24px; padding:0 40px;
-      background: color-mix(in srgb, var(--bg) 94%, #000 6%);
-      border-bottom:1px solid #1a1f26;
-      z-index: 999;
-      font-size:.95rem; color:var(--muted);
-    }
-    .contact-strip a{
-      color:var(--text); text-decoration:none; font-weight:600;
-    }
-    .contact-strip a:hover{ color:var(--accent); }
+nav a {
+  color: #eaeaea;
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
 
-    /* Sections */
-    section{
-      max-width:1100px; margin:auto;
-      padding:calc(var(--nav-h) + var(--contact-h) + 40px) 40px 80px;
-      scroll-margin-top: calc(var(--nav-h) + var(--contact-h) - 6px);
-      position:relative;
-    }
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #4dd0e1;
+  transition: width 0.3s ease;
+}
 
-    /* Minimalistic separators */
-    section:not(:first-of-type)::before{
-      content:"";
-      position:absolute; top:0; left:40px; right:40px;
-      height:1px; opacity:.55;
-      background:
-        linear-gradient(90deg, transparent 0 4%, var(--line) 4% 96%, transparent 96% 100%),
-        radial-gradient(closest-side, color-mix(in srgb, var(--accent) 30%, transparent), transparent) 0 50%/8px 1px no-repeat,
-        radial-gradient(closest-side, color-mix(in srgb, var(--accent-2) 30%, transparent), transparent) 100% 50%/8px 1px no-repeat;
-    }
+nav a:hover::after {
+  width: 100%;
+}
 
-    /* Hero (name left, image right) */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:40px; align-items:center;
-    }
-    @media (max-width: 900px){
-      .hero{grid-template-columns: 1fr; gap:24px;}
-    }
-    .name{
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin:0 0 6px; line-height:1.1;
-      font-weight:900; letter-spacing:.5px;
-      display:inline-block;
-      background: linear-gradient(90deg, var(--text), var(--accent));
-      -webkit-background-clip: text; background-clip: text; color:transparent;
-    }
-    .title{
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      margin:0 0 18px; color:var(--text);
-      position:relative;
-    }
-    .title::after{
-      content:"";
-      position:absolute; left:0; bottom:-10px;
-      width:120px; height:2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 60%, transparent));
-      animation: glow 6s infinite linear; opacity:.8;
-    }
-    @keyframes glow{
-      0%{filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 60%, transparent));}
-      50%{filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent-2) 60%, transparent));}
-      100%{filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 60%, transparent));}
-    }
+nav a:hover {
+  color: #4dd0e1;
+}
 
-    /* Avatar: grayscale & slightly darker, no visible border */
-    .avatar{
-      width:240px; max-width:100%;
-      border-radius:50%;
-      border:none; /* remove visible border */
-      filter: grayscale(100%) brightness(0.86) contrast(1.08);
-      box-shadow:0 8px 28px rgba(0,0,0,.35);
-      justify-self:end;
-      transition: filter .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
-      animation: bob 6s ease-in-out infinite;
-    }
-    .avatar:hover{
-      filter: grayscale(40%) brightness(0.92) contrast(1.05);
-      transform: translateY(-2px);
-      box-shadow:0 10px 34px rgba(0,0,0,.38);
-    }
-    @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
-    @media (max-width:900px){ .avatar{justify-self:start;} }
+/* Header Section */
+.header-section {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: auto;
+  padding: 120px 40px 60px;
+  animation: fadeInUp 1s ease;
+}
 
-    /* Typography */
-    h2{ color:var(--accent); margin:0 0 20px; font-weight:800; }
-    h3{ margin:34px 0 8px; font-weight:700; }
-    p{ line-height:1.7; max-width:800px; color:var(--muted); }
-    ul{ margin-left:20px; color:var(--muted); }
+.profile-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.7);
+  animation: floatAnimation 6s ease-in-out infinite;
+  transition: filter 0.5s ease, transform 0.3s ease;
+}
 
-    /* Tags / chips — subtle hover effects */
-    .tag{
-      display:inline-block;
-      background:var(--line);
-      padding:6px 12px; margin:6px 6px 0 0;
-      border-radius:999px; font-size:.85rem; color:var(--text);
-      border:1px solid #1f2530;
-      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
-      will-change: transform;
-    }
-    .tag:hover{
-      transform:translateY(-1.5px);
-      background: color-mix(in srgb, var(--line) 85%, var(--accent) 15%);
-      box-shadow: 0 4px 14px rgba(0,0,0,.28),
-                  0 0 10px color-mix(in srgb, var(--accent) 24%, transparent);
-    }
+.profile-image:hover {
+  filter: grayscale(80%) brightness(0.85);
+  transform: scale(1.05);
+}
 
-    /* Button */
-    a.btn{
-      display:inline-block; margin-top: 20px; padding: 12px 24px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color:#000; text-decoration:none; font-weight:800;
-      border-radius:999px; box-shadow:0 6px 18px rgba(0,0,0,.3);
-      transform: translateZ(0);
-      transition: filter .25s var(--ease), transform .25s var(--ease);
-    }
-    a.btn:hover{ filter:brightness(1.08); transform: translateY(-2px); }
+.header-content {
+  flex: 1;
+  min-width: 300px;
+}
 
-    /* Cards for rhythm */
-    .card{
-      background:var(--card);
-      border:1px solid #18202a;
-      border-radius: var(--radius);
-      padding:24px; margin:18px 0;
-    }
+.header-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #4dd0e1 0%, #80deea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 1s ease 0.2s backwards;
+}
 
-    /* Reveal on scroll */
-    .reveal{ opacity:0; transform:translateY(10px); }
-    .reveal.on{ animation: fadeUp .6s var(--ease) forwards; }
-    @keyframes fadeUp{ to{ opacity:1; transform:none; } }
+.contact-info {
+  margin: 20px 0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.4s backwards;
+}
 
-    /* Footer */
-    .footer{
-      padding:60px 40px; text-align:center; color:#777;
-    }
+.contact-info a {
+  color: #4dd0e1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-    /* Motion safety */
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto;}
-      .avatar, .title::after { animation:none; }
-      .reveal{ opacity:1; transform:none; }
-    }
-  </style>
+.contact-info a:hover {
+  color: #80deea;
+}
+
+/* Sections */
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 80px 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+section:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+section:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #4dd0e1;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #4dd0e1 0%, transparent 100%);
+  animation: expandWidth 0.8s ease forwards;
+}
+
+h3 {
+  margin-top: 40px;
+  color: #80deea;
+}
+
+p {
+  line-height: 1.7;
+  max-width: 800px;
+}
+
+ul {
+  margin-left: 20px;
+  line-height: 1.8;
+}
+
+/* Section Separators */
+.separator {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #4dd0e1 50%, transparent 100%);
+  margin: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.separator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, #80deea 50%, transparent 100%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  background: #1a1f26;
+  padding: 6px 12px;
+  margin: 6px 6px 0 0;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.tag:hover {
+  background: #252b35;
+  border-color: #4dd0e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(77, 208, 225, 0.2);
+}
+
+/* Button */
+a.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #4dd0e1;
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+a.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+a.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+a.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(77, 208, 225, 0.4);
+}
+
+/* Footer */
+.footer {
+  padding: 60px 40px;
+  text-align: center;
+  color: #777;
+  border-top: 1px solid #222;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: #4dd0e1;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(77, 208, 225, 0.3);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background: #80deea;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(77, 208, 225, 0.5);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60%;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-section {
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .header-content h1 {
+    font-size: 2rem;
+  }
+  
+  nav {
+    padding: 15px 20px;
+  }
+  
+  nav a {
+    margin-right: 10px;
+    font-size: 0.9rem;
+  }
+  
+  section {
+    padding: 60px 20px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <nav aria-label="Primary">
-    <a class="brand" href="#home" aria-labeln="true"></span> Bartek Kulig
-    </a>
-    #journeyJourney</a>
-    #transportTransport</a>
-    <automationAutomation</a>
-    #informationInformation</a>
-    #stackStack</a>
-    #portfolioPortfolio</a>
-    #cvCV</a>
-    <a hreftContact</a>
-  </nav>
 
-  <!-- CONTACT STRIP (TOP) -->
-  <div class="contact-strip" role="contentinfo">
-    <span>📍 Kraków, Poland · CET</span>
-    <a href="mailto:tlomiej@gmail.comkulig.bartlomiej@gmail.com</a>
-    <a href="tel:+481234123 456 789</a>
-    <a href="https://github.com/YOUR_USERNAME" target="_
-  <!-- HERO -->
-  <section id="home" class="hero">
+<nav>
+  <a href="#home">Home</a>
+  <a href="#journey">Journey</a>
+  <a href="#transport">Transport</a>
+  <a href="#automation">Automation</a>
+  <a href="#information">Information</a>
+  <a href="#stack">Stack</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#cv">CV</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div id="home" class="header-section">
+  <img src="bartek.png" alt="Bartek Kulig" class="profile-image">
+  <div class="header-content">
+    <h1>Bartek Kulig</h1>
+    <p style="font-size: 1.3rem; margin: 10px 0; color: #4dd0e1;">Architect who codes</p>
+    <div class="contact-info">
+      📧 <a href="mailto:kulig.bartlomiej@gmail.com">kulig.bartlomiej@gmail.com</a><br>
+      📱 <a href="tel:+48123456789">+48 123 456 789</a><br>
+      💼 <a href="https://linkedin.com/in/bartekkkulig" target="_blank">LinkedIn</a> · 
+      <a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a><br>
+      📍 Kraków, Poland · Remote-first (CET)
+    </div>
+    <p>
+      I build automation for AEC projects where things actually break:
+      large-scale transport and linear infrastructure.
+    </p>
+    <p>
+      I don't focus on geometry alone.<br>
+      I focus on information, decisions and workflows that survive real projects.
+    </p>
     <div>
-      <h1 class="name">Bartek Kulig</h1>
-      <div class="title">Architect who codes.</div>
-      <p class="reveal">
-        I build automation for AEC projects where things actually break:
-        large‑scale transport and linear infrastructure.
-      </p>
-      <p class="reveal">
-        I don’t focus on geometry alone.<br>
-        I focus on information, decisions and workflows that survive real projects.
-      </p>
       <span class="tag">Part of the rebellion</span>
       <span class="tag">Transport infrastructure</span>
       <span class="tag">Information automation</span>
     </div>
-
-    <img class="avatar" src="bartek.png" alt="Portrait of Bartek Kuley">
-    <h2 class="reveal">Journey</h2>
-
-    <div class="card reveal">
-      <h3>Education</h3>
-      <p>
-        Civil Engineering graduate (taught in English), followed by postgraduate
-        studies in BIM Management. My technical background comes from engineering,
-        not software theory — which heavily shapes how I design tools.
-      </p>
-    </div>
-
-    <div class="card reveal">
-      <h3>Professional Experience</h3>
-      <p>
-        Over the last decade I’ve worked across metro systems, high‑speed rail
-        and long transport corridors in Europe, the Middle East and North America.
-      </p>
-      <p>
-        I’ve moved from hands‑on BIM coordination into automation, consulting
-        and finally information management leadership — without losing touch
-        with real project delivery.
-      </p>
-    </div>
-  </section>
-
-  <!-- Transport -->
-  <section id="transport">
-    <h2 class="reveal">Transport &amp; Linear Infrastructure</h2>
-    <p class="reveal">
-      Transport projects expose broken workflows faster than any building project.
-      Scale, repetition and long asset lifecycles make manual processes impossible.
-    </p>
-    <ul class="reveal">
-      <li>High Speed Rail (UK)</li>
-      <li>Dubai Metro</li>
-      <li>High Frequency Rail (Canada)</li>
-      <li>Light Rail &amp; Rapid Transit projects</li>
-    </ul>
-    <p class="reveal">This environment is where my automation mindset was forged.</p>
-  </section>
-
-  <!-- Automation -->
-  <section id="automation">
-    <h2 class="reveal">Automation</h2>
-    <p class="reveal">I automate what teams repeat hundreds of times — and shouldn’t.</p>
-    <ul class="reveal">
-      <li>BIM QA/QC and model validation</li>
-      <li>Rule‑based checks (naming, parameters, LOI/LOD)</li>
-      <li>Design and coordination automation</li>
-      <li>Infrastructure‑scale workflows</li>
-    </ul>
-  </section>
-
-  <!-- Information -->
-  <section id="information">
-    <h2 class="reveal">Information Management</h2>
-    <p class="reveal">Most AEC problems are not model problems. They are information problems.</p>
-    <ul class="reveal">
-      <li>ISO 19650 turned into working processes</li>
-      <li>Model‑to‑data pipelines</li>
-      <li>Dashboards for decision‑makers</li>
-      <li>Automated reviews, approvals and audits</li>
-    </ul>
-    <p class="reveal">
-      Currently working as an <strong>Information Management Lead</strong>,
-      shaping strategy, processes and teams for large infrastructure programs.
-    </p>
-  </section>
-
-  <!-- Stack -->
-  <section id="stack">
-    <h2 class="reveal">Stack</h2>
-    <p class="reveal">Tools I use to challenge the status quo:</p>
-    <div class="reveal">
-      <span class="tag">Revit API (C#)</span>
-      <span class="tag">Dynamo</span>
-      <span class="tag">Python</span>
-      <span class="tag">pyRevit</span>
-      <span class="tag">Power BI</span>
-      <span class="tag">Power Automate</span>
-      <span class="tag">Power Apps</span>
-      <span class="tag">ACC / CDE</span>
-      <span class="tag">Bentley ProjectWise</span>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="portfolio">
-    <h2 class="reveal">Portfolio</h2>
-    <p class="reveal">
-      My portfolio is not a gallery of screenshots.
-      It’s a record of problems solved at scale.
-    </p>
-    <p class="reveal">
-      Most work is NDA‑bound — what matters is how I think,
-      not what logos I can show.
-    </p>
-  </section>
-
-  <!-- CV -->
-  <section id="cv">
-    <h2 class="reveal">CV</h2>
-    <p class="reveal">Want the classic format?</p>
-    CV_Bartek_Kulig.pdfDownload CV</a>
-  </section>
-
-  <!-- Contact (section kept for anchors; info now in top strip) -->
-  <section id="contact">
-    <h2 class="reveal">Contact</h2>
-    <p class="reveal">
-      You’ll find quick contact above the page.<br>
-      For longer notes, feel free to email me.
-    </p>
-    <p class="reveal">
-      <a href="mailto:kulig.bartlomiej@gmail.comtlomiej@gmail.com</a><br>
-      <a href="tel:+481234123 456 789</a><br>
-      <a href="https://github.com/YOUR_USERNAME" target="_blankection>
-
-  <div class="footer">
-    Built with frustration, experience and code.<br>
-    Part of the rebellion.
   </div>
+</div>
 
-  <script>
-    // Scroll‑spy + reveal-on-scroll
-    (function(){
-      const links = [...document.querySelectorAll('nav a[href^="#"]')];
-      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+<div class="separator"></div>
 
-      // Intersection Observer for reveal
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){ e.target.classList.add('on'); }
-        });
-      },{rootMargin:"-10% 0px -10% 0px", threshold:0.1});
-      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+<section id="journey">
+  <h2>Journey</h2>
 
-      // Scroll‑spy
-      const spy = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          const id = entry.target.id;
-          const link = links.find(l => l.getAttribute('href') === '#' + id);
-          if(link){
-            if(entry.isIntersecting){ links.forEach(l=>l.classList.remove('active')); link.classList.add('active'); }
-          }
-        });
-      },{rootMargin:"-30% 0px -60% 0px", threshold:0.2});
-      sections.forEach(s => spy.observe(s));
+  <h3>Education</h3>
+  <p>
+    Civil Engineering graduate (taught in English), followed by postgraduate
+    studies in BIM Management. My technical background comes from engineering,
+    not software theory — which heavily shapes how I design tools.
+  </p>
 
-      // Precise smooth scroll accounting for nav + contact strip height
-      links.forEach(a=>{
-        a.addEventListener('click', (ev)=>{
-          ev.preventDefault();
-          const id = a.getAttribute('href').slice(1);
-          const target = document.getElementById(id);
-          if(!target) return;
-          const styles = getComputedStyle(document.documentElement);
-          const navH = parseInt(styles.getPropertyValue('--nav-h'));
-          const contactH = parseInt(styles.getPropertyValue('--contact-h'));
-          const top = target.getBoundingClientRect().top + window.scrollY - (navH + contactH - 6);
-          window.scrollTo({ top, behavior: 'smooth' });
-          history.replaceState(null, "", '#' + id);
-        });
-      });
-    })();
-  </script>
+  <h3>Professional Experience</h3>
+  <p>
+    Over the last decade I've worked across metro systems, high-speed rail
+    and long transport corridors in Europe, the Middle East and North America.
+  </p>
+  <p>
+    I've moved from hands-on BIM coordination into automation, consulting
+    and finally information management leadership — without losing touch
+    with real project delivery.
+  </p>
+</section>
+
+<div class="separator"></div>
+
+<section id="transport">
+  <h2>Transport & Linear Infrastructure</h2>
+  <p>
+    Transport projects expose broken workflows faster than any building project.
+    Scale, repetition and long asset lifecycles make manual processes impossible.
+  </p>
+  <ul>
+    <li>High Speed Rail (UK)</li>
+    <li>Dubai Metro</li>
+    <li>High Frequency Rail (Canada)</li>
+    <li>Light Rail & Rapid Transit projects</li>
+  </ul>
+  <p>
+    This environment is where my automation mindset was forged.
+  </p>
+</section>
+
+<div class="separator"></div>
+
+<section id="automation">
+  <h2>Automation</h2>
+  <p>
+    I automate what teams repeat hundreds of times — and shouldn't.
+  </p>
+  <ul>
+    <li>BIM QA/QC and model validation</li>
+    <li>Rule-based checks (naming, parameters, LOI/LOD)</li>
+    <li>Design and coordination automation</li>
+    <li>Infrastructure-scale workflows</li>
+  </ul>
+</section>
+
+<div class="separator"></div>
+
+<section id="information">
+  <h2>Information Management</h2>
+  <p>
+    Most AEC problems are not model problems.
+    They are information problems.
+  </p>
+  <ul>
+    <li>ISO 19650 turned into working processes</li>
+    <li>Model-to-data pipelines</li>
+    <li>Dashboards for decision-makers</li>
+    <li>Automated reviews, approvals and audits</li>
+  </ul>
+  <p>
+    Currently working as an <strong>Information Management Lead</strong>,
+    shaping strategy, processes and teams for large infrastructure programs.
+  </p>
+</section>
+
+<div class="separator"></div>
+
+<section id="stack">
+  <h2>Stack</h2>
+  <p>
+    Tools I use to challenge the status quo:
+  </p>
+  <div>
+    <span class="tag">Revit API (C#)</span>
+    <span class="tag">Dynamo</span>
+    <span class="tag">Python</span>
+    <span class="tag">pyRevit</span>
+    <span class="tag">Power BI</span>
+    <span class="tag">Power Automate</span>
+    <span class="tag">Power Apps</span>
+    <span class="tag">ACC / CDE</span>
+    <span class="tag">Bentley ProjectWise</span>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<section id="portfolio">
+  <h2>Portfolio</h2>
+  <p>
+    My portfolio is not a gallery of screenshots.
+    It's a record of problems solved at scale.
+  </p>
+  <p>
+    Most work is NDA-bound — what matters is how I think,
+    not what logos I can show.
+  </p>
+</section>
+
+<div class="separator"></div>
+
+<section id="cv">
+  <h2>CV</h2>
+  <p>
+    Want the classic format?
+  </p>
+  <a class="btn" href="CV_Bartek_Kulig.pdf">Download CV</a>
+</section>
+
+<div class="separator"></div>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>
+    Kraków, Poland · Remote-first (CET)<br>
+    Open to travel and on-site collaboration.
+  </p>
+  <p>
+    📧 <a href="mailto:kulig.bartlomiej@gmail.com">kulig.bartlomiej@gmail.com</a><br>
+    📱 <a href="tel:+48123456789">+48 123 456 789</a><br>
+    💼 <a href="https://linkedin.com/in/bartekkkulig" target="_blank">LinkedIn</a><br>
+    💻 <a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a>
+  </p>
+</section>
+
+<div class="footer">
+  Built with frustration, experience and code.<br>
+  Part of the rebellion.
+</div>
+
+<button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+<script>
+// Scroll to top button visibility
+window.addEventListener('scroll', function() {
+  const scrollButton = document.querySelector('.scroll-to-top');
+  if (window.pageYOffset > 300) {
+    scrollButton.classList.add('visible');
+  } else {
+    scrollButton.classList.remove('visible');
+  }
+});
+
+// Smooth scroll to top
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Add animation to sections when they come into view
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('section').forEach(section => {
+  observer.observe(section);
+});
+</script>
+
 </body>
 </html>
