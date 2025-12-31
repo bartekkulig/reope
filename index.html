@@ -23,10 +23,10 @@ body.dark {
   background: #0b0d10;
   color: #eaeaea;
 }
-/* Accent Color: Subtle green */
+/* Accent Color: Darker green for light mode */
 :root {
-  --accent: #6b9080;
-  --accent-light: #8fb3a0;
+  --accent: #4a6a5a;
+  --accent-light: #6b9080;
   --bg: #f5f5f5;
   --text: #333;
   --bg-alt: #fff;
@@ -238,39 +238,40 @@ ul {
 /* Tags */
 .tag {
   display: inline-block;
-  background: rgba(var(--accent), 0.1);
+  background: rgba(var(--accent-light), 0.2);
   padding: 6px 12px;
   margin: 6px 6px 0 0;
   border-radius: 20px;
   font-size: 0.85rem;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  color: var(--text);
+  border: 1px solid var(--accent-light);
   transition: all 0.3s ease;
   cursor: default;
 }
 .tag:hover {
-  background: rgba(var(--accent), 0.2);
+  background: rgba(var(--accent-light), 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(42,109,176,0.2);
+  box-shadow: 0 4px 12px rgba(107,144,128,0.2);
 }
 /* Timeline */
 .timeline {
   position: relative;
-  width: 100%;
-  height: 300px;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+  height: 400px;
   margin: 40px 0;
 }
 .timeline-line {
   position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
+  top: 200px;
+  left: 5%;
+  right: 5%;
   height: 2px;
   background: var(--accent);
 }
 .timeline-dot {
   position: absolute;
-  top: 46px;
+  top: 196px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -279,17 +280,23 @@ ul {
 }
 .timeline-description {
   position: absolute;
-  top: 60px;
   background: rgba(var(--bg-alt), 0.8);
-  padding: 10px;
+  padding: 5px 10px;
   border-radius: 8px;
-  width: 200px;
+  width: 140px;
+  font-size: 0.85rem;
   text-align: center;
   transform: translateX(-50%);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 body.dark .timeline-description {
   background: rgba(26,31,38,0.8);
+}
+.timeline-dot:nth-child(odd) .timeline-description {
+  top: -160px;
+}
+.timeline-dot:nth-child(even) .timeline-description {
+  top: 20px;
 }
 /* Projects and Automation Accordion */
 .accordion-item {
@@ -319,11 +326,13 @@ body.dark .timeline-description {
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  opacity: 0;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
   padding: 0 15px;
 }
 .accordion-item.active .accordion-content {
   max-height: 500px;
+  opacity: 1;
   padding-bottom: 15px;
 }
 .date {
@@ -391,10 +400,12 @@ body.dark .stack-item {
 }
 .portfolio-type {
   font-size: 0.9rem;
+  font-style: italic;
   color: #777;
 }
 .portfolio-year {
   font-size: 0.8rem;
+  font-weight: bold;
   color: #777;
 }
 .portfolio-header::after {
@@ -409,11 +420,13 @@ body.dark .stack-item {
 .portfolio-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  opacity: 0;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
   padding: 0 15px;
 }
 .portfolio-item.active .portfolio-content {
   max-height: 500px;
+  opacity: 1;
   padding-bottom: 15px;
 }
 .images-container {
@@ -480,7 +493,7 @@ body.dark .image-placeholder {
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(42,109,176,0.3);
+  box-shadow: 0 4px 12px rgba(107,144,128,0.3);
 }
 .scroll-to-top.visible {
   opacity: 1;
@@ -489,7 +502,7 @@ body.dark .image-placeholder {
 .scroll-to-top:hover {
   background: var(--accent-light);
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(42,109,176,0.5);
+  box-shadow: 0 8px 20px rgba(107,144,128,0.5);
 }
 .expanded {
   position: fixed;
@@ -565,6 +578,21 @@ body.dark .image-placeholder {
   .section-number {
     left: -20px;
   }
+  .timeline {
+    height: 500px;
+  }
+  .timeline-line {
+    top: 250px;
+  }
+  .timeline-dot {
+    top: 246px;
+  }
+  .timeline-dot:nth-child(odd) .timeline-description {
+    top: -160px;
+  }
+  .timeline-dot:nth-child(even) .timeline-description {
+    top: 20px;
+  }
 }
 </style>
 </head>
@@ -635,55 +663,55 @@ body.dark .image-placeholder {
   </p>
   <div class="timeline">
     <div class="timeline-line"></div>
-    <div class="timeline-dot" style="left: 0%;" data-year="2015">
+    <div class="timeline-dot" style="left: 5%;">
       <div class="timeline-description">
         <h4>Civil Engineering (B.Eng.)</h4>
         <p>2011 - 2015, Politechnika Krakowska</p>
       </div>
     </div>
-    <div class="timeline-dot" style="left: 9.09%;" data-year="2016">
+    <div class="timeline-dot" style="left: 20%;">
       <div class="timeline-description">
         <h4>BIM Designer at JACOBS</h4>
         <p>2016 - 2018, Dubai Metro R2020</p>
       </div>
     </div>
-    <div class="timeline-dot" style="left: 27.27%;" data-year="2018">
+    <div class="timeline-dot" style="left: 30%;">
       <div class="timeline-description">
         <h4>Postgraduate BIM Manager</h4>
         <p>2017 - 2018, Wyzsza Szkola Bankowa</p>
       </div>
     </div>
-    <div class="timeline-dot" style="left: 27.27%;" data-year="2018">
+    <div class="timeline-dot" style="left: 35%;">
       <div class="timeline-description">
         <h4>BIM Designer & Coordinator</h4>
         <p>2018, Lower Thames Crossing</p>
       </div>
     </div>
-    <div class="timeline-dot" style="left: 27.27%;" data-year="2018">
+    <div class="timeline-dot" style="left: 40%;">
       <div class="timeline-description">
         <h4>BIM Coordinator Viaducts/Tunnels</h4>
         <p>2018, Dubai Metro R2020</p>
       </div>
     </div>
-    <div class="timeline-dot" style="left: 36.36%;" data-year="2019">
+    <div class="timeline-dot" style="left: 45%;">
       <div class="timeline-description">
         <h4>BIM Manager at JACOBS</h4>
         <p>2019 - 2020, HS2, Western Rail, Transpennine</p>
       </div>
     </div>
-    <div class="timeline-dot" style="left: 45.45%;" data-year="2020">
+    <div class="timeline-dot" style="left: 55%;">
       <div class="timeline-description">
         <h4>BIM Specialist at AUTODESK</h4>
         <p>2020 - 2023</p>
       </div>
     </div>
-    <div class="timeline-dot" style="left: 72.73%;" data-year="2023">
+    <div class="timeline-dot" style="left: 80%;">
       <div class="timeline-description">
         <h4>BIM Manager at AECOM</h4>
         <p>2023 - 2025, Surrey-Langley, High Frequency Rail</p>
       </div>
     </div>
-    <div class="timeline-dot" style="left: 90.91%;" data-year="2025">
+    <div class="timeline-dot" style="left: 95%;">
       <div class="timeline-description">
         <h4>BIM Lead - EC Poland at AECOM</h4>
         <p>2025 - Present</p>
@@ -936,7 +964,174 @@ body.dark .image-placeholder {
         </div>
       </div>
     </div>
-    <!-- Add more portfolio items similarly -->
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">003</span>
+        <span class="portfolio-name">Airport Link Upgrade</span>
+        <br>
+        <span class="portfolio-type">Aviation Rail</span>
+        <br>
+        <span class="portfolio-year">2021</span>
+        <div class="tags">
+          <span class="tag">Power BI</span><span class="tag">Power Automate</span><span class="tag">Revit API</span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Data pipeline from models to dashboards for stakeholder reporting.</p>
+        <p>Impact: Improved decision-making speed by 50%.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">004</span>
+        <span class="portfolio-name">Urban Light Rail</span>
+        <br>
+        <span class="portfolio-type">Public Transport</span>
+        <br>
+        <span class="portfolio-year">2020</span>
+        <div class="tags">
+          <span class="tag">Navisworks</span><span class="tag">Dynamo</span><span class="tag">C#</span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Rule-based QA for multi-disciplinary models.</p>
+        <p>Impact: Detected 150+ issues early, avoiding rework costs.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">005</span>
+        <span class="portfolio-name">Bridge Reconstruction</span>
+        <br>
+        <span class="portfolio-type">Highway Infrastructure</span>
+        <br>
+        <span class="portfolio-year">2019</span>
+        <div class="tags">
+          <span class="tag">Revit</span><span class="tag">Python</span><span class="tag">Grasshopper</span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Automated reinforcement detailing with API scripts.</p>
+        <p>Impact: Accelerated detailing by 60%.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">006</span>
+        <span class="portfolio-name">Tunnel Ventilation System</span>
+        <br>
+        <span class="portfolio-type">Underground Infrastructure</span>
+        <br>
+        <span class="portfolio-year">2018</span>
+        <div class="tags">
+          <span class="tag">InfraWorks</span><span class="tag">Power Apps</span><span class="tag">C#</span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Simulation integration with BIM models for optimization.</p>
+        <p>Impact: Reduced energy consumption estimates by 25%.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">007</span>
+        <span class="portfolio-name">Rail Signal Modernization</span>
+        <br>
+        <span class="portfolio-type">Rail Signaling</span>
+        <br>
+        <span class="portfolio-year">2017</span>
+        <div class="tags">
+          <span class="tag">ProjectWise</span><span class="tag">Dynamo</span><span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Automated asset tagging and database sync.</p>
+        <p>Impact: Streamlined maintenance data for 100km corridor.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">008</span>
+        <span class="portfolio-name">Coastal Defense Project</span>
+        <br>
+        <span class="portfolio-type">Civil Defense</span>
+        <br>
+        <span class="portfolio-year">2016</span>
+        <div class="tags">
+          <span class="tag">Civil 3D</span><span class="tag">Grasshopper</span><span class="tag">Power BI</span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Parametric coastal modeling with environmental data.</p>
+        <p>Impact: Optimized design for flood resistance.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">009</span>
+        <span class="portfolio-name">Urban Redevelopment Hub</span>
+        <br>
+        <span class="portfolio-type">Mixed-Use Infrastructure</span>
+        <br>
+        <span class="portfolio-year">2015</span>
+        <div class="tags">
+          <span class="tag">Revit API</span><span class="tag">Power Automate</span><span class="tag">C#</span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Multi-source data integration for planning dashboards.</p>
+        <p>Impact: Enhanced collaboration across 5 teams.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="portfolio-number">010</span>
+        <span class="portfolio-name">Highway Expansion</span>
+        <br>
+        <span class="portfolio-type">Road Infrastructure</span>
+        <br>
+        <span class="portfolio-year">2014</span>
+        <div class="tags">
+          <span class="tag">InfraWorks</span><span class="tag">Python</span><span class="tag">Dynamo</span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <p>Challenge/Solution: Automated alignment optimization with scripts.</p>
+        <p>Impact: Cut planning phase by 35%.</p>
+        <div class="images-container">
+          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
+          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 <div class="footer">
@@ -966,7 +1161,6 @@ if (localStorage.getItem('mode') === 'light') {
   document.body.classList.remove('dark');
 }
 updateModeIcon();
-
 // Active Nav Link
 const sections = document.querySelectorAll('section, .header-section');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -985,7 +1179,6 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-
 // Scroll to top
 window.addEventListener('scroll', function() {
   const scrollButton = document.querySelector('.scroll-to-top');
@@ -1001,7 +1194,6 @@ function scrollToTop() {
     behavior: 'smooth'
   });
 }
-
 // Section Visibility
 const observerOptions = {
   threshold: 0.1,
@@ -1017,19 +1209,16 @@ const sectionObserver = new IntersectionObserver(function(entries) {
 document.querySelectorAll('section').forEach(section => {
   sectionObserver.observe(section);
 });
-
 // Accordion Toggle
 function toggleAccordion(el) {
   el.classList.toggle('active');
 }
-
 // Parallax Profile Image
 window.addEventListener('scroll', function() {
   const profile = document.querySelector('.profile-image');
   const scrollPos = window.pageYOffset / 5;
   profile.style.transform = `translateY(${scrollPos}px)`;
 });
-
 // Expand Image
 function expandImage(el) {
   const expanded = document.getElementById('expanded-image');
