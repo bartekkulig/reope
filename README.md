@@ -1,43 +1,37 @@
-# Bartek Kulig – BIM Developer
+# Bartek Kulig – AEC Developer
 
-I automate not only BIM models,  
-but the way information flows through transport infrastructure projects.
+I don’t automate BIM models.
+I automate how information survives real infrastructure projects.
 
-## Who I am
+## Context
 
-BIM Lead and AEC Developer with 10+ years of experience on large-scale
-transport and linear infrastructure projects, including metro systems,
-high-speed rail and light rail.
+I’ve spent over a decade working on large-scale transport and linear infrastructure:
+metro systems, high-speed rail and long corridors where hundreds of models,
+disciplines and stakeholders meet reality.
 
-My work sits at the intersection of:
-- BIM & software development
-- information management automation
-- real-world project delivery
+That’s where most BIM workflows break.
 
-## Transport & Linear Infrastructure
+## What I actually do
 
-I’ve worked on complex infrastructure projects where scale,
-repetition and long asset lifecycles make manual processes impossible.
+I build automation that connects:
+models → information → decisions
 
-Projects include:
-- High Speed Rail (UK)
-- Metro systems (Dubai)
-- High Frequency Rail (Canada)
-- Light Rail / Rapid Transit (Canada)
-
-## What I automate
-
-Most AEC problems are not geometry problems – they are information problems.
-
-I build automations for:
-- BIM QA/QC and model validation (Revit, Dynamo, pyRevit)
-- Information management aligned with ISO 19650
-- Data extraction from models into structured datasets
-- Dashboards and reporting using Power BI
-- Review, approval and audit workflows using Power Automate
+This includes:
+- BIM QA/QC and model validation using Dynamo, Python and pyRevit
+- Information management workflows aligned with ISO 19650
+- Data pipelines from Revit into Power BI dashboards
+- Automated reviews, approvals and audits using Power Automate
 - Lightweight internal tools using Power Apps
 
-## Tech stack
+## Why infrastructure matters
+
+Transport projects expose broken workflows faster than any building project.
+Scale, repetition and long asset lifecycles make manual processes impossible.
+
+Automation is not optional.
+It’s survival.
+
+## Tech I use
 
 - Revit API (C#)
 - Dynamo, Python
@@ -49,8 +43,10 @@ I build automations for:
 ## Why this repository exists
 
 To show how AEC software should be built:
-from real infrastructure problems,
-not abstract ideas.
+from real project pain,
+not abstract theory.
+
+Part of the rebellion.
 
 Automation is not about speed.
 It is about trust in information.
