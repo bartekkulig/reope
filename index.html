@@ -1,87 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Bartek Kulig – BIM Developer</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0e0e0e;
-      color: #f0f0f0;
-      margin: 0;
-      padding: 40px;
-    }
-    h1, h2 {
-      color: #4dd0e1;
-    }
-    section {
-      max-width: 900px;
-      margin: auto;
-      margin-bottom: 60px;
-    }
-    a {
-      color: #4dd0e1;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Bartek Kulig | Architect who codes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0b0d10;
+  color: #eaeaea;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #0b0d10;
+  border-bottom: 1px solid #222;
+  padding: 15px 40px;
+  z-index: 1000;
+}
+
+nav a {
+  color: #eaeaea;
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #4dd0e1;
+}
+
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 120px 40px 80px;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #4dd0e1;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 40px;
+}
+
+p {
+  line-height: 1.7;
+  max-width: 800px;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+.tag {
+  display: inline-block;
+  background: #1a1f26;
+  padding: 6px 12px;
+  margin: 6px 6px 0 0;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.footer {
+  padding: 60px 40px;
+  text-align: center;
+  color: #777;
+}
+
+a.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #4dd0e1;
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+}
+</style>
 </head>
+
 <body>
 
-<section>
-  <h1>I automate not only BIM models,<br>but the way information flows.</h1>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#journey">Journey</a>
+  <a href="#transport">Transport</a>
+  <a href="#automation">Automation</a>
+  <a href="#information">Information</a>
+  <a href="#stack">Stack</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#cv">CV</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+  <h1>Architect who codes.<br>Infrastructure guy by nature.</h1>
   <p>
-    BIM Lead & Developer with 10+ years of experience in
-    transport and linear infrastructure projects.
+    I build automation for AEC projects where things actually break:
+    large-scale transport and linear infrastructure.
+  </p>
+  <p>
+    I don’t focus on geometry alone.  
+    I focus on information, decisions and workflows that survive real projects.
+  </p>
+  <span class="tag">Part of the rebellion</span>
+  <span class="tag">Transport infrastructure</span>
+  <span class="tag">Information automation</span>
+</section>
+
+<section id="journey">
+  <h2>Journey</h2>
+
+  <h3>Education</h3>
+  <p>
+    Civil Engineering graduate (taught in English), followed by postgraduate
+    studies in BIM Management. My technical background comes from engineering,
+    not software theory — which heavily shapes how I design tools.
+  </p>
+
+  <h3>Professional Experience</h3>
+  <p>
+    Over the last decade I’ve worked across metro systems, high-speed rail
+    and long transport corridors in Europe, the Middle East and North America.
+  </p>
+  <p>
+    I’ve moved from hands-on BIM coordination into automation, consulting
+    and finally information management leadership — without losing touch
+    with real project delivery.
   </p>
 </section>
 
-<section>
+<section id="transport">
   <h2>Transport & Linear Infrastructure</h2>
   <p>
-    Metro systems, high-speed rail and long linear assets taught me
-    that automation is not optional – it is the only way to scale.
+    Transport projects expose broken workflows faster than any building project.
+    Scale, repetition and long asset lifecycles make manual processes impossible.
   </p>
   <ul>
     <li>High Speed Rail (UK)</li>
     <li>Dubai Metro</li>
     <li>High Frequency Rail (Canada)</li>
-    <li>Light Rail / Rapid Transit (Canada)</li>
+    <li>Light Rail & Rapid Transit projects</li>
   </ul>
+  <p>
+    This environment is where my automation mindset was forged.
+  </p>
 </section>
 
-<section>
-  <h2>Information Automation</h2>
+<section id="automation">
+  <h2>Automation</h2>
   <p>
-    Most AEC problems are information problems, not modeling problems.
+    I automate what teams repeat hundreds of times — and shouldn’t.
   </p>
   <ul>
-    <li>BIM QA/QC automation (Dynamo, pyRevit)</li>
-    <li>ISO 19650 information management</li>
-    <li>Model data pipelines → Power BI</li>
-    <li>Automated reviews and approvals (Power Automate)</li>
-    <li>Custom internal tools (Power Apps)</li>
+    <li>BIM QA/QC and model validation</li>
+    <li>Rule-based checks (naming, parameters, LOI/LOD)</li>
+    <li>Design and coordination automation</li>
+    <li>Infrastructure-scale workflows</li>
   </ul>
 </section>
 
-<section>
-  <h2>Why Reope</h2>
+<section id="information">
+  <h2>Information Management</h2>
   <p>
-    Reope represents the kind of AEC development I believe in:
-    software built from real project pain, not theory.
+    Most AEC problems are not model problems.
+    They are information problems.
+  </p>
+  <ul>
+    <li>ISO 19650 turned into working processes</li>
+    <li>Model-to-data pipelines</li>
+    <li>Dashboards for decision-makers</li>
+    <li>Automated reviews, approvals and audits</li>
+  </ul>
+  <p>
+    Currently working as an <strong>Information Management Lead</strong>,
+    shaping strategy, processes and teams for large infrastructure programs.
   </p>
 </section>
 
-<section>
+<section id="stack">
+  <h2>Stack</h2>
   <p>
-    📍 Kraków, Poland<br>
-    🌍 Remote-first (CET)<br>
-    ✈️ Open to business travel
+    Tools I use to challenge the status quo:
+  </p>
+  <div>
+    <span class="tag">Revit API (C#)</span>
+    <span class="tag">Dynamo</span>
+    <span class="tag">Python</span>
+    <span class="tag">pyRevit</span>
+    <span class="tag">Power BI</span>
+    <span class="tag">Power Automate</span>
+    <span class="tag">Power Apps</span>
+    <span class="tag">ACC / CDE</span>
+    <span class="tag">Bentley ProjectWise</span>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h2>Portfolio</h2>
+  <p>
+    My portfolio is not a gallery of screenshots.
+    It’s a record of problems solved at scale.
   </p>
   <p>
-    <a href="https://github.com/bartekkulig/reope">GitHub</a>
+    Most work is NDA-bound — what matters is how I think,
+    not what logos I can show.
   </p>
 </section>
+
+<section id="cv">
+  <h2>CV</h2>
+  <p>
+    Want the classic format?
+  </p>
+  <a class="btn" href="CV_Bartek_Kulig.pdf">Download CV</a>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>
+    Kraków, Poland · Remote-first (CET)<br>
+    Open to travel and on-site collaboration.
+  </p>
+  <p>
+    <a href="mailto:kulig.bartlomiej@gmail.com">kulig.bartlomiej@gmail.com</a><br>
+    <a href="https://github.com/YOUR_USERNAME">GitHub</a>
+  </p>
+</section>
+
+<div class="footer">
+  Built with frustration, experience and code.<br>
+  Part of the rebellion.
+</div>
 
 </body>
 </html>
