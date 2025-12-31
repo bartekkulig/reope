@@ -283,7 +283,7 @@ ul {
   background: rgba(var(--bg-alt), 0.8);
   padding: 5px 10px;
   border-radius: 8px;
-  width: 140px;
+  width: 120px;
   font-size: 0.85rem;
   text-align: center;
   transform: translateX(-50%);
@@ -293,20 +293,20 @@ body.dark .timeline-description {
   background: rgba(26,31,38,0.8);
 }
 .timeline-dot:nth-child(odd) .timeline-description {
-  top: -160px;
+  top: -120px;
 }
 .timeline-dot:nth-child(even) .timeline-description {
   top: 20px;
 }
 /* Projects and Automation Accordion */
-.accordion-item {
+.accordion-item, .portfolio-item {
   margin-bottom: 10px;
   border: 1px solid var(--border);
   border-radius: 4px;
   transition: all 0.3s;
   cursor: pointer;
 }
-.accordion-item:hover {
+.accordion-item:hover, .portfolio-item:hover {
   border-color: var(--accent);
 }
 .accordion-header {
@@ -320,7 +320,7 @@ body.dark .timeline-description {
   right: 15px;
   transition: transform 0.3s;
 }
-.accordion-item.active .accordion-header::after {
+.accordion-item.active .accordion-header::after, .portfolio-item.active .accordion-header::after {
   transform: rotate(180deg);
 }
 .accordion-content {
@@ -330,7 +330,7 @@ body.dark .timeline-description {
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
   padding: 0 15px;
 }
-.accordion-item.active .accordion-content {
+.accordion-item.active .accordion-content, .portfolio-item.active .accordion-content {
   max-height: 500px;
   opacity: 1;
   padding-bottom: 15px;
@@ -376,16 +376,6 @@ body.dark .stack-item {
   color: #777;
 }
 /* Portfolio Items */
-.portfolio-item {
-  margin-bottom: 20px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.portfolio-item:hover {
-  border-color: var(--accent);
-}
 .portfolio-header {
   padding: 15px;
   position: relative;
@@ -407,27 +397,6 @@ body.dark .stack-item {
   font-size: 0.8rem;
   font-weight: bold;
   color: #777;
-}
-.portfolio-header::after {
-  content: '\25BE';
-  position: absolute;
-  right: 15px;
-  transition: transform 0.3s;
-}
-.portfolio-item.active .portfolio-header::after {
-  transform: rotate(180deg);
-}
-.portfolio-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
-  padding: 0 15px;
-}
-.portfolio-item.active .portfolio-content {
-  max-height: 500px;
-  opacity: 1;
-  padding-bottom: 15px;
 }
 .images-container {
   display: flex;
@@ -588,7 +557,7 @@ body.dark .image-placeholder {
     top: 246px;
   }
   .timeline-dot:nth-child(odd) .timeline-description {
-    top: -160px;
+    top: -120px;
   }
   .timeline-dot:nth-child(even) .timeline-description {
     top: 20px;
