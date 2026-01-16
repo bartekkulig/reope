@@ -331,7 +331,7 @@ body.dark .timeline-description {
   padding: 0 15px;
 }
 .accordion-item.active .accordion-content, .portfolio-item.active .accordion-content {
-  max-height: 500px;
+  max-height: 2000px; /* Increased to allow auto-adjustment without clipping */
   opacity: 1;
   padding-bottom: 15px;
 }
@@ -704,14 +704,12 @@ body.dark .image-placeholder {
 <section id="projects">
   <div class="section-number">02</div>
   <h2>Projects</h2>
-
   <p>
     Transport and linear infrastructure projects expose the truth about AEC automation.<br />
     Long timelines, changing requirements, rotating teams and massive datasets quickly destroy fragile solutions.<br />
     Years spent on rail and large infrastructure projects taught me one thing:<br />
     automation must be understandable, resilient and adaptable — or it becomes technical debt.
   </p>
-
   <p>
     <b>What transport taught me:</b><br />
     • Models are temporary — information must survive<br />
@@ -720,11 +718,8 @@ body.dark .image-placeholder {
     • Decision-makers need clarity, not more data<br />
     • Information management is fundamentally about risk control
   </p>
-
   <br />
-
   <div class="projects-list">
-
     <!-- Surrey–Langley SkyTrain -->
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
@@ -732,24 +727,18 @@ body.dark .image-placeholder {
         <span class="date">2023 – 2025</span>
       </div>
       <div class="accordion-content">
-
         <img src="https://www.surrey.ca/sites/default/files/styles/16x9_1920w_original/public/2024-09/surrey-langley-skytrain-map-2024.jpg?itok=OravZ3im"
-             style="width:100%; margin-bottom:16px;" />
-
+             style="width:75%; display:block; margin:0 auto 16px;" />
         <b>Role:</b> BIM Lead – Design (Stations)<br /><br />
-
         I led the BIM strategy for the design phase, ensuring consistent standards and real collaboration across multidisciplinary teams.<br />
         My focus was not documentation — but integration, clarity and decision-ready information.<br /><br />
-
         I managed the integration of architectural, structural and infrastructure models to support planning, coordination and delivery at scale.<br /><br />
-
         <b>Game-changer tools:</b><br />
-        • <b>BIM Performance Dashboard</b> – real-time project health visibility  
+        • <b>BIM Performance Dashboard</b> – real-time project health visibility
         (powered by Revit Model Checker + Civil 3D Model Checker)<br />
         • <b>Revit Clash Guard</b> – proactive clash prevention instead of late firefighting
       </div>
     </div>
-
     <!-- High Frequency Rail -->
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
@@ -757,23 +746,16 @@ body.dark .image-placeholder {
         <span class="date">2023 – 2025</span>
       </div>
       <div class="accordion-content">
-
         <img src="https://www.transportaction.ca/wp-content/uploads/2021/07/TC-updated-HFR-Map.jpg"
-             style="width:100%; margin-bottom:16px;" />
-
+             style="width:75%; display:block; margin:0 auto 16px;" />
         <b>Role:</b> BIM Manager<br /><br />
-
         Direct collaboration with the client — VIA HFR, acting on behalf of the Government of Canada — during the Pre-Development Agreement phase.<br /><br />
-
         I supported the implementation and audit of BIM processes at a strategic level, shaping how information would flow long before delivery started.<br /><br />
-
         I developed core documentation and led the data quality and CDE integration team to meet the project’s long-term strategic requirements.<br /><br />
-
         <b>Rebel tool:</b><br />
         • <b>Fully Automated MIDP Engine</b> — no spreadsheets, no manual upkeep, no ambiguity
       </div>
     </div>
-
     <!-- Autodesk -->
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
@@ -781,26 +763,18 @@ body.dark .image-placeholder {
         <span class="date">Global</span>
       </div>
       <div class="accordion-content">
-
         <img src="https://www.digitalengineering247.com/images/wide/autodesk-logo-primary-rgb-black-large.png"
-             style="width:100%; margin-bottom:16px;" />
-
+             style="width:75%; display:block; margin:0 auto 16px;" />
         <b>Role:</b> BIM Consultant<br /><br />
-
         I supported strategic corporate clients in digital transformation initiatives based on BIM and automation.<br /><br />
-
         My work focused on turning Autodesk platforms into real delivery systems — not just software deployments.<br /><br />
-
         I developed and implemented BIM strategies aligned with ISO 19650 and PAS 1192, including BEP, MIDP and TIDP oversight.<br /><br />
-
         I built information management processes, automated data flows and carried out audits for enterprise-scale clients.<br /><br />
-
         <b>Spotlight tools:</b><br />
         • ACC API automations for enterprise clients<br />
         • <b>Python Corridor Serpent</b> — a custom Python engine for corridor planning and linear infrastructure analysis
       </div>
     </div>
-
     <!-- UK Projects -->
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
@@ -808,25 +782,17 @@ body.dark .image-placeholder {
         <span class="date">2019 – 2020</span>
       </div>
       <div class="accordion-content">
-
         <img src="https://www.networkrail.co.uk/wp-content/uploads/2019/03/Map-of-Transpennine-route-1.png"
-             style="width:100%; margin-bottom:16px;" />
-
+             style="width:75%; display:block; margin:0 auto 16px;" />
         <b>Role:</b> BIM Manager / Information Manager<br /><br />
-
         Projects included: Transpennine Route Upgrade, HS2, Western Rail Link to Heathrow.<br /><br />
-
         I worked directly with the client on BIM implementation, acting as Information Manager and Model Coordinator.<br /><br />
-
         I managed the CDE environment (ProjectWise), automated BIM/CAD compliance processes and led quality audits using MicroStation, AECOsim and Power BI.<br /><br />
-
         I introduced 4D/5D modelling (Synchro / Primavera P6) and automated clash detection, significantly improving data quality and information flow.<br /><br />
-
         <b>Digital Vision for Network Rail:</b><br />
         A scalable, automation-first approach to standards, coordination and reporting.
       </div>
     </div>
-
     <!-- Lower Thames Crossing -->
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
@@ -834,21 +800,15 @@ body.dark .image-placeholder {
         <span class="date">2018</span>
       </div>
       <div class="accordion-content">
-
         <img src="https://hub.zeevou.com/apis/files/526732/67c219b4712dd988973393.JPG/download"
-             style="width:100%; margin-bottom:16px;" />
-
+             style="width:75%; display:block; margin:0 auto 16px;" />
         <b>Role:</b> BIM Coordinator<br /><br />
-
         Coordination of the bridge design team on behalf of the client, Highways England.<br /><br />
-
         Responsibilities included team training, CDE configuration (BIM 360), defining common standards and multidisciplinary model coordination and reviews in Revit.<br /><br />
-
         <b>Tool:</b><br />
         • Dynamo-based bridge generator accelerating early-stage design
       </div>
     </div>
-
     <!-- Dubai Metro -->
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
@@ -856,26 +816,18 @@ body.dark .image-placeholder {
         <span class="date">2016 – 2018</span>
       </div>
       <div class="accordion-content">
-
         <img src="https://media.emirates247.com/images/2015/03/expo2020-extension-metromrt1%20(1).jpg"
-             style="width:100%; margin-bottom:16px;" />
-
+             style="width:75%; display:block; margin:0 auto 16px;" />
         <b>Role:</b> BIM Coordinator<br /><br />
-
         Acting on the subcontractor side, I coordinated BIM activities for viaducts and tunnels in line with client requirements and PAS 1192 standards.<br /><br />
-
         I managed the structural modelling team, verified models in Revit and Navisworks, produced clash reports and progress presentations using Power BI.<br /><br />
-
         I also delivered internal training and organised modelling workflows.<br /><br />
-
         <b>Automation:</b><br />
         • Revit adaptive family generation automations for complex infrastructure elements
       </div>
     </div>
-
   </div>
 </section>
-
 <div class="separator"></div>
 <section id="automation">
   <div class="section-number">03</div>
