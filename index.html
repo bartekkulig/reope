@@ -96,6 +96,20 @@ nav {
   font-size: 1.2rem;
   color: var(--text);
 }
+.expanded-image {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.expanded-image img {
+  max-width: 90%;
+  max-height: 90%;
+} 
 /* Header Section */
 .header-section {
   display: flex;
@@ -1217,6 +1231,9 @@ A Dynamo script regenerated elements automatically whenever inputs changed, elim
         <div class="images-container">
           <img src="008_1.png" class="image-placeholder" onclick="expandImage(this)">
           <img src="008_2.png" class="image-placeholder" onclick="expandImage(this)">
+          <div id="expanded-image" onclick="closeExpanded()">
+  <img src="">
+</div>
         </div>
       </div>
     </div>
@@ -1312,9 +1329,12 @@ window.addEventListener('scroll', function() {
 // Expand Image
 function expandImage(el) {
   const expanded = document.getElementById('expanded-image');
-  expanded.querySelector('img').src = 'placeholder.jpg';
+  const img = expanded.querySelector('img');
+
+  img.src = el.src;   // <-- THIS was missing
   expanded.style.display = 'flex';
 }
+
 function closeExpanded() {
   document.getElementById('expanded-image').style.display = 'none';
 }
