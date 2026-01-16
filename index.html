@@ -607,7 +607,7 @@ body.dark .image-placeholder {
       I build systems that do.
     </p>
     <p>
-      Based in Kraków, working mostly remote. Happy to travel when collaboration matters.
+      <i>Based in Kraków, working mostly remote. Happy to travel when collaboration matters.</i>
     </p>
     <div>
       <span class="tag">Patience</span>
@@ -833,48 +833,97 @@ body.dark .image-placeholder {
   <div class="section-number">03</div>
   <h2>Automation & Information Management</h2>
   <p>
-    I automate what teams repeat hundreds of times — and shouldn't. Most AEC problems are not model problems. They are information problems.
+    I use automation because I’m tired of watching skilled people waste time on problems that should have been solved years ago.</p>
+    <p><My goal is not to impress with complex scripts.</p>
+    <p>My goal is to quietly remove friction from everyday project work.</p>
   </p>
   <div class="automation-list">
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        QA/QC Validation
+        Workflow Automation
       </div>
       <div class="accordion-content">
-        Rule-based checks for naming, parameters, LOI/LOD in Revit/C3D models.
+        I automate everyday project workflows that quietly consume time and attention.
+
+From issue creation and status updates to approvals, data validation and notifications, I remove manual steps wherever possible using Power Automate and custom scripts.
+
+These automations are designed to blend into existing processes, not replace them with another tool teams have to learn.
       </div>
     </div>
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        Data Flows
+        Model Health & Performance
       </div>
       <div class="accordion-content">
-        Combine multiple sources, report in PowerBI, automate info flows with PowerApps and Flows.
+        I build systems that continuously monitor model health instead of checking it only when something breaks.
+
+This includes tracking file size growth, broken links, incorrect worksets, coordination risks and performance bottlenecks.
+
+The aim is early warning, not post-mortem analysis — catching problems while they are still cheap to fix.
       </div>
     </div>
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        Design Automation
+        Standards as Code
       </div>
       <div class="accordion-content">
-        Dynamo, Grasshopper, C# Revit API for coordination and infrastructure workflows.
+        I treat standards as executable rules, not PDF documents.
+
+Naming conventions, parameter requirements and modelling rules are translated into automated checks and validation logic.
+
+This removes ambiguity, reduces enforcement overhead and ensures consistency without constant manual policing.
       </div>
     </div>
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        Information Pipelines
+        Decision Support Automation
       </div>
       <div class="accordion-content">
-        Model-to-data, dashboards, automated audits per ISO 19650.
+        I focus on automation that supports decision-making, not just production.
+
+By connecting model data with dashboards and structured reporting, I help project leaders understand risk, progress and quality in near real-time.
+
+Automation becomes a strategic tool — not just an efficiency boost.
       </div>
     </div>
   </div>
+  Information management is where most AEC projects still struggle.
+
+We generate enormous amounts of data, yet decision-making remains slow, manual and risky.
+
+I work in this space because I’m frustrated by how little of that data is actually used.
+
+Problems I repeatedly encounter
+
+• Information scattered across models, spreadsheets and emails
+• Manual reporting that consumes time but adds little value
+• Project leaders lacking real-time insight
+• Data trapped inside models instead of flowing through systems
+
+How I approach information management
+
+• Define information requirements early and realistically
+• Automate validation instead of relying on manual checks
+• Connect BIM data with Power BI dashboards for transparency
+• Use Power Automate and Power Apps to support real processes
+• Design systems that teams can actually maintain
+
+Closing line
+
+Information should work harder than people — not the other way around.
 </section>
 <div class="separator"></div>
 <section id="stack">
   <div class="section-number">04</div>
   <h2>Stack</h2>
   <p>
+    I work across multiple tools and platforms, but I don’t believe in tool-centric thinking.
+
+Dynamo, pyRevit, Power BI, Power Automate or custom scripts are interchangeable.
+What matters is choosing the simplest solution that survives real project pressure.
+
+If a tool only works in demos, it doesn’t belong on a live project.
+    
     Tools I use to challenge the status quo:
   </p>
   <div class="stack-grid">
@@ -940,8 +989,11 @@ body.dark .image-placeholder {
   <div class="section-number">05</div>
   <h2>Portfolio</h2>
   <p>
-    My portfolio is not a gallery of screenshots.
-    It's a record of problems solved at scale.
+    A selection of real-world problems solved through automation and information management.
+
+These are not showcase projects.
+They are responses to frustration, inefficiency and broken workflows.
+    Dlatego zawsze lepiej tworzyć procesy (bo mogą być użyte ponownie), a nie szyte na miarę rozwiązania – bo mogą okazać sietypowe tylko dla danej osoby lub konkretnego case study.
   </p>
   <p>
     Most work is NDA-bound — what matters is how I think,
@@ -951,18 +1003,28 @@ body.dark .image-placeholder {
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <span class="portfolio-number">001</span>
-        <span class="portfolio-name">Metro Extension Project</span>
+        <span class="portfolio-name">BIM Performance Dashboard</span>
         <br>
-        <span class="portfolio-type">Urban Transit</span>
+        <span class="portfolio-type">Surrey-Langley SkyTrain</span>
         <br>
-        <span class="portfolio-year">2023</span>
+        <span class="portfolio-year">2024</span>
         <div class="tags">
-          <span class="tag">Revit</span><span class="tag">Dynamo</span><span class="tag">C#</span>
+          <span class="tag">PowerBI</span><span class="tag">Power Automate</span><span class="tag">Dynamo</span><span class="tag">ACC</span>
         </div>
       </div>
       <div class="accordion-content">
-        <p>Challenge/Solution: Automated clash detection in complex tunnel models, reducing errors by 40%.</p>
-        <p>Impact: Saved 200 man-hours per review cycle.</p>
+        <p>Challenge:</p>
+        The project involved the delivery of eight SkyTrain stations in Vancouver, with dozens of subcontractors across architecture, structures, civil, MEP, landscape, signalling, fire protection and more.
+Although BIM standards were formally defined (BEP, MIDP, TIDP), they were applied inconsistently. Each organisation brought its own habits, naming conventions and modelling approaches. Information was fragmented, poorly standardised and often lost between tools and teams.
+Technology existed, but processes were weak and people struggled to work in a truly digital way.
+        <p>Idea:</p> Create a single, central source of truth that would continuously reflect the real BIM health of the project.
+The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.
+Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.
+        <p>Solution: The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.
+Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.
+In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.</p>
+         <p>Why it mattered: The dashboard transformed BIM from a static compliance exercise into a measurable, transparent performance system.
+It significantly reduced coordination effort, exposed issues early, improved standard adoption across teams and created a shared understanding of what “good BIM” actually looks like on a complex, multi-disciplinary infrastructure project.</p>
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
@@ -971,19 +1033,29 @@ body.dark .image-placeholder {
     </div>
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        <span class="portfolio-number">002</span>
-        <span class="portfolio-name">High-Speed Rail Corridor</span>
+        <span class="portfolio-number">001</span>
+        <span class="portfolio-name">BIM Performance Dashboard</span>
         <br>
-        <span class="portfolio-type">Rail Infrastructure</span>
+        <span class="portfolio-type">Surrey-Langley SkyTrain</span>
         <br>
-        <span class="portfolio-year">2022</span>
+        <span class="portfolio-year">2024</span>
         <div class="tags">
-          <span class="tag">Civil 3D</span><span class="tag">Grasshopper</span><span class="tag">Python</span>
+          <span class="tag">PowerBI</span><span class="tag">Power Automate</span><span class="tag">Dynamo</span><span class="tag">ACC</span>
         </div>
       </div>
       <div class="accordion-content">
-        <p>Challenge/Solution: Parametric modeling for viaducts, enabling rapid iterations.</p>
-        <p>Impact: Reduced design time by 30%.</p>
+        <p>Challenge:</p>
+        The project involved the delivery of eight SkyTrain stations in Vancouver, with dozens of subcontractors across architecture, structures, civil, MEP, landscape, signalling, fire protection and more.
+Although BIM standards were formally defined (BEP, MIDP, TIDP), they were applied inconsistently. Each organisation brought its own habits, naming conventions and modelling approaches. Information was fragmented, poorly standardised and often lost between tools and teams.
+Technology existed, but processes were weak and people struggled to work in a truly digital way.
+        <p>Idea:</p> Create a single, central source of truth that would continuously reflect the real BIM health of the project.
+The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.
+Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.
+        <p>Solution: The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.
+Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.
+In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.</p>
+         <p>Why it mattered: The dashboard transformed BIM from a static compliance exercise into a measurable, transparent performance system.
+It significantly reduced coordination effort, exposed issues early, improved standard adoption across teams and created a shared understanding of what “good BIM” actually looks like on a complex, multi-disciplinary infrastructure project.</p>
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
@@ -992,19 +1064,29 @@ body.dark .image-placeholder {
     </div>
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        <span class="portfolio-number">003</span>
-        <span class="portfolio-name">Airport Link Upgrade</span>
+        <span class="portfolio-number">001</span>
+        <span class="portfolio-name">BIM Performance Dashboard</span>
         <br>
-        <span class="portfolio-type">Aviation Rail</span>
+        <span class="portfolio-type">Surrey-Langley SkyTrain</span>
         <br>
-        <span class="portfolio-year">2021</span>
+        <span class="portfolio-year">2024</span>
         <div class="tags">
-          <span class="tag">Power BI</span><span class="tag">Power Automate</span><span class="tag">Revit API</span>
+          <span class="tag">PowerBI</span><span class="tag">Power Automate</span><span class="tag">Dynamo</span><span class="tag">ACC</span>
         </div>
       </div>
       <div class="accordion-content">
-        <p>Challenge/Solution: Data pipeline from models to dashboards for stakeholder reporting.</p>
-        <p>Impact: Improved decision-making speed by 50%.</p>
+        <p>Challenge:</p>
+        The project involved the delivery of eight SkyTrain stations in Vancouver, with dozens of subcontractors across architecture, structures, civil, MEP, landscape, signalling, fire protection and more.
+Although BIM standards were formally defined (BEP, MIDP, TIDP), they were applied inconsistently. Each organisation brought its own habits, naming conventions and modelling approaches. Information was fragmented, poorly standardised and often lost between tools and teams.
+Technology existed, but processes were weak and people struggled to work in a truly digital way.
+        <p>Idea:</p> Create a single, central source of truth that would continuously reflect the real BIM health of the project.
+The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.
+Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.
+        <p>Solution: The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.
+Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.
+In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.</p>
+         <p>Why it mattered: The dashboard transformed BIM from a static compliance exercise into a measurable, transparent performance system.
+It significantly reduced coordination effort, exposed issues early, improved standard adoption across teams and created a shared understanding of what “good BIM” actually looks like on a complex, multi-disciplinary infrastructure project.</p>
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
@@ -1013,19 +1095,29 @@ body.dark .image-placeholder {
     </div>
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        <span class="portfolio-number">004</span>
-        <span class="portfolio-name">Urban Light Rail</span>
+        <span class="portfolio-number">001</span>
+        <span class="portfolio-name">BIM Performance Dashboard</span>
         <br>
-        <span class="portfolio-type">Public Transport</span>
+        <span class="portfolio-type">Surrey-Langley SkyTrain</span>
         <br>
-        <span class="portfolio-year">2020</span>
+        <span class="portfolio-year">2024</span>
         <div class="tags">
-          <span class="tag">Navisworks</span><span class="tag">Dynamo</span><span class="tag">C#</span>
+          <span class="tag">PowerBI</span><span class="tag">Power Automate</span><span class="tag">Dynamo</span><span class="tag">ACC</span>
         </div>
       </div>
       <div class="accordion-content">
-        <p>Challenge/Solution: Rule-based QA for multi-disciplinary models.</p>
-        <p>Impact: Detected 150+ issues early, avoiding rework costs.</p>
+        <p>Challenge:</p>
+        The project involved the delivery of eight SkyTrain stations in Vancouver, with dozens of subcontractors across architecture, structures, civil, MEP, landscape, signalling, fire protection and more.
+Although BIM standards were formally defined (BEP, MIDP, TIDP), they were applied inconsistently. Each organisation brought its own habits, naming conventions and modelling approaches. Information was fragmented, poorly standardised and often lost between tools and teams.
+Technology existed, but processes were weak and people struggled to work in a truly digital way.
+        <p>Idea:</p> Create a single, central source of truth that would continuously reflect the real BIM health of the project.
+The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.
+Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.
+        <p>Solution: The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.
+Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.
+In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.</p>
+         <p>Why it mattered: The dashboard transformed BIM from a static compliance exercise into a measurable, transparent performance system.
+It significantly reduced coordination effort, exposed issues early, improved standard adoption across teams and created a shared understanding of what “good BIM” actually looks like on a complex, multi-disciplinary infrastructure project.</p>
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
@@ -1034,19 +1126,29 @@ body.dark .image-placeholder {
     </div>
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        <span class="portfolio-number">005</span>
-        <span class="portfolio-name">Bridge Reconstruction</span>
+        <span class="portfolio-number">001</span>
+        <span class="portfolio-name">BIM Performance Dashboard</span>
         <br>
-        <span class="portfolio-type">Highway Infrastructure</span>
+        <span class="portfolio-type">Surrey-Langley SkyTrain</span>
         <br>
-        <span class="portfolio-year">2019</span>
+        <span class="portfolio-year">2024</span>
         <div class="tags">
-          <span class="tag">Revit</span><span class="tag">Python</span><span class="tag">Grasshopper</span>
+          <span class="tag">PowerBI</span><span class="tag">Power Automate</span><span class="tag">Dynamo</span><span class="tag">ACC</span>
         </div>
       </div>
       <div class="accordion-content">
-        <p>Challenge/Solution: Automated reinforcement detailing with API scripts.</p>
-        <p>Impact: Accelerated detailing by 60%.</p>
+        <p>Challenge:</p>
+        The project involved the delivery of eight SkyTrain stations in Vancouver, with dozens of subcontractors across architecture, structures, civil, MEP, landscape, signalling, fire protection and more.
+Although BIM standards were formally defined (BEP, MIDP, TIDP), they were applied inconsistently. Each organisation brought its own habits, naming conventions and modelling approaches. Information was fragmented, poorly standardised and often lost between tools and teams.
+Technology existed, but processes were weak and people struggled to work in a truly digital way.
+        <p>Idea:</p> Create a single, central source of truth that would continuously reflect the real BIM health of the project.
+The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.
+Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.
+        <p>Solution: The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.
+Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.
+In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.</p>
+         <p>Why it mattered: The dashboard transformed BIM from a static compliance exercise into a measurable, transparent performance system.
+It significantly reduced coordination effort, exposed issues early, improved standard adoption across teams and created a shared understanding of what “good BIM” actually looks like on a complex, multi-disciplinary infrastructure project.</p>
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
@@ -1055,19 +1157,29 @@ body.dark .image-placeholder {
     </div>
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        <span class="portfolio-number">006</span>
-        <span class="portfolio-name">Tunnel Ventilation System</span>
+        <span class="portfolio-number">001</span>
+        <span class="portfolio-name">BIM Performance Dashboard</span>
         <br>
-        <span class="portfolio-type">Underground Infrastructure</span>
+        <span class="portfolio-type">Surrey-Langley SkyTrain</span>
         <br>
-        <span class="portfolio-year">2018</span>
+        <span class="portfolio-year">2024</span>
         <div class="tags">
-          <span class="tag">InfraWorks</span><span class="tag">Power Apps</span><span class="tag">C#</span>
+          <span class="tag">PowerBI</span><span class="tag">Power Automate</span><span class="tag">Dynamo</span><span class="tag">ACC</span>
         </div>
       </div>
       <div class="accordion-content">
-        <p>Challenge/Solution: Simulation integration with BIM models for optimization.</p>
-        <p>Impact: Reduced energy consumption estimates by 25%.</p>
+        <p>Challenge:</p>
+        The project involved the delivery of eight SkyTrain stations in Vancouver, with dozens of subcontractors across architecture, structures, civil, MEP, landscape, signalling, fire protection and more.
+Although BIM standards were formally defined (BEP, MIDP, TIDP), they were applied inconsistently. Each organisation brought its own habits, naming conventions and modelling approaches. Information was fragmented, poorly standardised and often lost between tools and teams.
+Technology existed, but processes were weak and people struggled to work in a truly digital way.
+        <p>Idea:</p> Create a single, central source of truth that would continuously reflect the real BIM health of the project.
+The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.
+Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.
+        <p>Solution: The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.
+Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.
+In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.</p>
+         <p>Why it mattered: The dashboard transformed BIM from a static compliance exercise into a measurable, transparent performance system.
+It significantly reduced coordination effort, exposed issues early, improved standard adoption across teams and created a shared understanding of what “good BIM” actually looks like on a complex, multi-disciplinary infrastructure project.</p>
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
@@ -1076,19 +1188,29 @@ body.dark .image-placeholder {
     </div>
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        <span class="portfolio-number">007</span>
-        <span class="portfolio-name">Rail Signal Modernization</span>
+        <span class="portfolio-number">001</span>
+        <span class="portfolio-name">BIM Performance Dashboard</span>
         <br>
-        <span class="portfolio-type">Rail Signaling</span>
+        <span class="portfolio-type">Surrey-Langley SkyTrain</span>
         <br>
-        <span class="portfolio-year">2017</span>
+        <span class="portfolio-year">2024</span>
         <div class="tags">
-          <span class="tag">ProjectWise</span><span class="tag">Dynamo</span><span class="tag">Python</span>
+          <span class="tag">PowerBI</span><span class="tag">Power Automate</span><span class="tag">Dynamo</span><span class="tag">ACC</span>
         </div>
       </div>
       <div class="accordion-content">
-        <p>Challenge/Solution: Automated asset tagging and database sync.</p>
-        <p>Impact: Streamlined maintenance data for 100km corridor.</p>
+        <p>Challenge:</p>
+        The project involved the delivery of eight SkyTrain stations in Vancouver, with dozens of subcontractors across architecture, structures, civil, MEP, landscape, signalling, fire protection and more.
+Although BIM standards were formally defined (BEP, MIDP, TIDP), they were applied inconsistently. Each organisation brought its own habits, naming conventions and modelling approaches. Information was fragmented, poorly standardised and often lost between tools and teams.
+Technology existed, but processes were weak and people struggled to work in a truly digital way.
+        <p>Idea:</p> Create a single, central source of truth that would continuously reflect the real BIM health of the project.
+The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.
+Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.
+        <p>Solution: The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.
+Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.
+In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.</p>
+         <p>Why it mattered: The dashboard transformed BIM from a static compliance exercise into a measurable, transparent performance system.
+It significantly reduced coordination effort, exposed issues early, improved standard adoption across teams and created a shared understanding of what “good BIM” actually looks like on a complex, multi-disciplinary infrastructure project.</p>
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
@@ -1097,61 +1219,29 @@ body.dark .image-placeholder {
     </div>
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
-        <span class="portfolio-number">008</span>
-        <span class="portfolio-name">Coastal Defense Project</span>
+        <span class="portfolio-number">001</span>
+        <span class="portfolio-name">BIM Performance Dashboard</span>
         <br>
-        <span class="portfolio-type">Civil Defense</span>
+        <span class="portfolio-type">Surrey-Langley SkyTrain</span>
         <br>
-        <span class="portfolio-year">2016</span>
+        <span class="portfolio-year">2024</span>
         <div class="tags">
-          <span class="tag">Civil 3D</span><span class="tag">Grasshopper</span><span class="tag">Power BI</span>
+          <span class="tag">PowerBI</span><span class="tag">Power Automate</span><span class="tag">Dynamo</span><span class="tag">ACC</span>
         </div>
       </div>
       <div class="accordion-content">
-        <p>Challenge/Solution: Parametric coastal modeling with environmental data.</p>
-        <p>Impact: Optimized design for flood resistance.</p>
-        <div class="images-container">
-          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-item" onclick="toggleAccordion(this)">
-      <div class="accordion-header">
-        <span class="portfolio-number">009</span>
-        <span class="portfolio-name">Urban Redevelopment Hub</span>
-        <br>
-        <span class="portfolio-type">Mixed-Use Infrastructure</span>
-        <br>
-        <span class="portfolio-year">2015</span>
-        <div class="tags">
-          <span class="tag">Revit API</span><span class="tag">Power Automate</span><span class="tag">C#</span>
-        </div>
-      </div>
-      <div class="accordion-content">
-        <p>Challenge/Solution: Multi-source data integration for planning dashboards.</p>
-        <p>Impact: Enhanced collaboration across 5 teams.</p>
-        <div class="images-container">
-          <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
-          <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-item" onclick="toggleAccordion(this)">
-      <div class="accordion-header">
-        <span class="portfolio-number">010</span>
-        <span class="portfolio-name">Highway Expansion</span>
-        <br>
-        <span class="portfolio-type">Road Infrastructure</span>
-        <br>
-        <span class="portfolio-year">2014</span>
-        <div class="tags">
-          <span class="tag">InfraWorks</span><span class="tag">Python</span><span class="tag">Dynamo</span>
-        </div>
-      </div>
-      <div class="accordion-content">
-        <p>Challenge/Solution: Automated alignment optimization with scripts.</p>
-        <p>Impact: Cut planning phase by 35%.</p>
+        <p>Challenge:</p>
+        The project involved the delivery of eight SkyTrain stations in Vancouver, with dozens of subcontractors across architecture, structures, civil, MEP, landscape, signalling, fire protection and more.
+Although BIM standards were formally defined (BEP, MIDP, TIDP), they were applied inconsistently. Each organisation brought its own habits, naming conventions and modelling approaches. Information was fragmented, poorly standardised and often lost between tools and teams.
+Technology existed, but processes were weak and people struggled to work in a truly digital way.
+        <p>Idea:</p> Create a single, central source of truth that would continuously reflect the real BIM health of the project.
+The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.
+Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.
+        <p>Solution: The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.
+Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.
+In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.</p>
+         <p>Why it mattered: The dashboard transformed BIM from a static compliance exercise into a measurable, transparent performance system.
+It significantly reduced coordination effort, exposed issues early, improved standard adoption across teams and created a shared understanding of what “good BIM” actually looks like on a complex, multi-disciplinary infrastructure project.</p>
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
@@ -1161,8 +1251,9 @@ body.dark .image-placeholder {
   </div>
 </section>
 <div class="footer">
-  Built with frustration, experience and code.<br>
-  Part of the rebellion.
+  Built from frustration, experience and code.<br>
+Still questioning the status quo.<br>
+Part of the rebellion.
 </div>
 <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
 <div id="expanded-image" class="expanded" style="display: none;" onclick="closeExpanded()">
