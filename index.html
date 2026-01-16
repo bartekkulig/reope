@@ -31,6 +31,7 @@ body.dark {
   --text: #333;
   --bg-alt: #fff;
   --border: #ddd;
+  --bg-rgb: 245,245,245;
 }
 body.dark {
   --accent: #6b9080;
@@ -39,13 +40,14 @@ body.dark {
   --text: #eaeaea;
   --bg-alt: #1a1f26;
   --border: #222;
+  --bg-rgb: 11,13,16;
 }
 /* Navigation */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(var(--bg-rgb, 245,245,245), 0.95);
+  background: rgba(var(--bg-rgb), 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   padding: 15px 40px;
@@ -54,9 +56,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-body.dark nav {
-  background: rgba(11, 13, 16, 0.95);
 }
 .nav-links {
   display: flex;
@@ -594,6 +593,7 @@ body.dark .image-placeholder {
     <p>
       I’ve spent years inside large infrastructure projects watching the same patterns repeat:
       powerful software, talented people - and systems that still fail under real pressure.
+    </p>
     <p>
       That frustration pushed me into automation, information management and custom tooling.
       Not to chase complexity, but to remove it.
@@ -663,7 +663,7 @@ body.dark .image-placeholder {
     </div>
     <div class="timeline-dot" style="left: 35%;">
       <div class="timeline-description">
-        <h4>BIM Designer & Coordinator & Jacobs</h4>
+        <h4>BIM Designer & Coordinator @ Jacobs</h4>
         <p>2018, Cracow</p>
       </div>
     </div>
@@ -833,9 +833,8 @@ body.dark .image-placeholder {
   <h2>Automation & Information Management</h2>
   <p>
     I use automation because I’m tired of watching skilled people waste time on problems that should have been solved years ago.</p>
-    <p><My goal is not to impress with complex scripts.</p>
+    <p>My goal is not to impress with complex scripts.</p>
     <p>My goal is to quietly remove friction from everyday project work.</p>
-  </p>
   <div class="automation-list">
     <div class="accordion-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
@@ -843,9 +842,7 @@ body.dark .image-placeholder {
       </div>
       <div class="accordion-content">
         I automate everyday project workflows that quietly consume time and attention.
-
 From issue creation and status updates to approvals, data validation and notifications, I remove manual steps wherever possible using Power Automate and custom scripts.
-
 These automations are designed to blend into existing processes, not replace them with another tool teams have to learn.
       </div>
     </div>
@@ -855,9 +852,7 @@ These automations are designed to blend into existing processes, not replace the
       </div>
       <div class="accordion-content">
         I build systems that continuously monitor model health instead of checking it only when something breaks.
-
 This includes tracking file size growth, broken links, incorrect worksets, coordination risks and performance bottlenecks.
-
 The aim is early warning, not post-mortem analysis - catching problems while they are still cheap to fix.
       </div>
     </div>
@@ -867,9 +862,7 @@ The aim is early warning, not post-mortem analysis - catching problems while the
       </div>
       <div class="accordion-content">
         I treat standards as executable rules, not PDF documents.
-
 Naming conventions, parameter requirements and modelling rules are translated into automated checks and validation logic.
-
 This removes ambiguity, reduces enforcement overhead and ensures consistency without constant manual policing.
       </div>
     </div>
@@ -879,34 +872,25 @@ This removes ambiguity, reduces enforcement overhead and ensures consistency wit
       </div>
       <div class="accordion-content">
         I focus on automation that supports decision-making, not just production.
-
 By connecting model data with dashboards and structured reporting, I help project leaders understand risk, progress and quality in near real-time.
-
 Automation becomes a strategic tool - not just an efficiency boost.
       </div>
     </div>
   </div>
   <p>Information management is where most AEC projects still struggle.</p>
-
 <p>We generate enormous amounts of data, yet decision-making remains slow, manual and risky.</p>
-
 <p>I work in this space because I’m frustrated by how little of that data is actually used.</p>
-
 <p><b>Problems I repeatedly encounter:</b></p>
-
 • Information scattered across models, spreadsheets and emails<br>
 • Manual reporting that consumes time but adds little value<br>
 • Project leaders lacking real-time insight<br>
 • Data trapped inside models instead of flowing through systems<br><br>
-
 <p><b>How I approach information management:</b></p>
-
 • Define information requirements early and realistically<br>
 • Automate validation instead of relying on manual checks<br>
 • Connect BIM data with Power BI dashboards for transparency<br>
 • Use Power Automate and Power Apps to support real processes<br>
 • Design systems that teams can actually maintain<br><br><br>
-
 <i><center>Information should work harder than people — not the other way around.</center></i>
 </section>
 <div class="separator"></div>
@@ -915,12 +899,10 @@ Automation becomes a strategic tool - not just an efficiency boost.
   <h2>Stack</h2>
   <p>
     I work across multiple tools and platforms, but I don’t believe in tool-centric thinking.
-
 Dynamo, pyRevit, Power BI, Power Automate or custom scripts are interchangeable.
 What matters is choosing the simplest solution that survives real project pressure.
-
-If a tool only works in demos, it doesn’t belong on a live project.
-    
+If a tool only works in demos, it doesn’t belong on a live project.<br><br>
+   
     Tools I use to challenge the status quo:
   </p>
   <div class="stack-grid">
@@ -987,13 +969,12 @@ If a tool only works in demos, it doesn’t belong on a live project.
   <h2>Portfolio</h2>
   <p>
     A selection of real-world problems solved through automation and information management.
-
 These are not showcase projects.
 They are responses to frustration, inefficiency and broken workflows.
-    That’s why it’s always better to design processes (because they can be reused) rather than tailor-made solutions — which often turn out to be unique only to a specific person or a single case study.
+    That’s why it’s always better to design processes (because they can be reused) rather than tailor-made solutions - which often turn out to be unique only to a specific person or a single case study.
   </p>
   <p>
-    Most work is NDA-bound — what matters is how I think,
+    Most work is NDA-bound - what matters is how I think,
     not what logos I can show. Here are example projects with randomized data.
   </p>
   <div class="portfolio-list">
@@ -1019,7 +1000,7 @@ Technology existed, but processes were weak and people struggled to work in a tr
 The solution had to work independently of human discipline, automate data flows as much as possible, and clearly compare expected versus actual information at object, model and project level.<br>
 Ideally, the tool would also act as a practical guide for less experienced engineers, showing not only what is wrong, but what the correct value should be.<br>
         <p><b>Solution:</b></p>
-          The BIM Performance Dashboard – an interactive Power BI report available to all project stakeholders.<br>
+          The BIM Performance Dashboard - an interactive Power BI report available to all project stakeholders.<br>
 Custom tools were developed to automatically extract and validate data from Revit and Civil 3D models on a weekly basis. Model content was checked against project requirements and compared directly with a master spreadsheet containing approved standards and values. Any deviation was immediately flagged and visualised.<br>
 In parallel, data from Autodesk Construction Cloud (used as the CDE) was automatically exported, including information containers, coordination issues, users and clashes. Using Power Automate, this data was pushed to SharePoint and connected live to the Power BI dashboard.<br>
          <p><b>Why it mattered:</b></p>
@@ -1051,20 +1032,20 @@ Interdisciplinary collaboration was weak and clashes were treated as a BIM probl
         Clashes should be prevented at the moment they are created, not weeks later in coordination meetings.<br>
 If designers could immediately see that they were colliding with another discipline while modelling, many issues could be avoided altogether. The solution needed to work directly inside Revit and require minimal effort from the user.<br>
         <p><b>Solution:</b></p>
-          Clash Guard – a custom Revit add-in.<br>
+          Clash Guard - a custom Revit add-in.<br>
 After defining basic parameters and selecting relevant linked models, the tool actively monitors modelling activity. When a clash occurs, the user is immediately notified via a pop-up.<br>
 The tool allows filtering by categories, worksets and disciplines, and provides access to a live list of detected clashes, enabling designers to resolve issues while they are still local and easy to fix.<br>
         <p><b>Why it mattered:</b></p>
-           Clash Guard shifted responsibility back to where it belongs – at the point of design.<br>
+           Clash Guard shifted responsibility back to where it belongs - at the point of design.<br>
 It dramatically reduced the creation of new clashes, improved interdisciplinary awareness and helped change team behaviour from reactive coordination to proactive design quality.<br>
-      
+     
         <div class="images-container">
           <div class="image-placeholder" onclick="expandImage(this)">Image 1</div>
           <div class="image-placeholder" onclick="expandImage(this)">Image 2</div>
         </div>
       </div>
     </div>
-  
+ 
     <div class="portfolio-item" onclick="toggleAccordion(this)">
       <div class="accordion-header">
         <span class="portfolio-number">003</span>
@@ -1117,11 +1098,8 @@ Out-of-the-box functionality was powerful but often insufficient for enterprise-
         Leverage the ACC API to automate high-volume, low-value tasks and expose data that is otherwise difficult to access at scale.<br>
         <p><b>Solution:</b></p>
           Examples of delivered automations included:
-
 Automated extraction of issues, clashes and model metadata across multiple ACC projects into central reporting systems.
-
 Rule-based issue creation and assignment based on model checks and naming conventions.
-
 Automated auditing of user access and permissions across hubs and projects.
         <p><b>Why it mattered:</b></p>
            API-driven automation reduced manual effort, improved consistency and enabled clients to scale their digital processes without increasing operational overhead.
@@ -1149,7 +1127,7 @@ Automated auditing of user access and permissions across hubs and projects.
         <p><b>Idea:</b></p>
         Develop a lightweight, software-agnostic tool based on GIS data that allows rapid corridor option generation and evaluation at early project stages.
         <p><b>Solution:</b></p>
-          Compass – a Python-based application operating on an interactive world map.
+          Compass - a Python-based application operating on an interactive world map.
 The tool consumes SHP files provided by clients or sourced from open data repositories, visualises constraints and allows users to define corridor parameters, start/end points and intermediate connections.
 Users can assign weights to constraints, choose optimisation goals (cost, speed, safety) and generate multiple route variants, visualised as previews or heatmaps, and exported back to SHP for further detailed design.
         <p><b>Why it mattered:</b></p>
@@ -1246,7 +1224,7 @@ A Dynamo script regenerated elements automatically whenever inputs changed, elim
         </div>
       </div>
     </div>
-    
+   
   </div>
 </section>
 <div class="footer">
